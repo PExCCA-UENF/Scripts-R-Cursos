@@ -2,6 +2,7 @@
 #          EXTENSÃO UNIVERSITÁRIA EM CIÊNCIAS CLIMÁTICAS E AMBIENTAIS          #
 #          PROJETO "PROCESSAMENTO E ANÁLISE DE DADOS AMBIENTAIS COM R"         #
 #                        Contato: pexcca.lamet@uenf.br                         #
+#                       https://linktr.ee/pexcca.lamet                         #
 #                       Script atualizado em 27/04/2023                        #
 #==============================================================================#
 
