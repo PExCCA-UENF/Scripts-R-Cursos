@@ -167,13 +167,13 @@ sqrt(9)     # Raiz quadrada
 # Valores lógicos: TRUE(verdadeiro) e FALSE(falso).
 # Frequentemente utilizados para testar condições e criar expressões condicionais.
 
-#	<           Menor que
-#	<=          Menor ou igual a
-#	>           Maior que
-#	>=          Maior ou igual a
-#	==          Igual a
-#	!           Negação
-#	!=          Diferente de
+#	<   Menor que
+#	<=  Menor ou igual a
+#	>   Maior que
+#	>=  Maior ou igual a
+#	==  Igual a
+#	!   Negação
+#	!=  Diferente de
 
 3 < 6   # 3 é menor que 6?
 3 <= 0  # 3 é menor ou igual a 0?
