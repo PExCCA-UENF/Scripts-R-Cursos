@@ -189,18 +189,18 @@ sqrt(9)     # Raiz quadrada
 # de matemática, estatística, para leitura e manipulação de dados ou arquivos, etc.
 
 # Algumas funções básicas do R:
-# mean() - Retorna a média.
-# sum() -	Retorna a soma.
-# min()	- Retorna o mínimo.
-# max()	- Retorna o máximo.
-# range()	- Retorna o mínimo e o máximo.
-# median()	- Retorna a mediana.
-# sd() -	Retorna o desvio padrão.
-# var()	- Retorna a variância.
-# round()	- Retorna o valor arredondado.
-# summary()	- Retorna um resumo estatístico dos dados.
-# seq() - Retorna uma sequência, sendo possível controlar a que passo a sequência cresce.
-# rep() - Retorna uma sequencia de repetições. 
+# mean()    Retorna a média.
+# sum()     Retorna a soma.
+# min()     Retorna o mínimo.
+# max()     Retorna o máximo.
+# range()   Retorna o mínimo e o máximo.
+# median()  Retorna a mediana.
+# sd()      Retorna o desvio padrão.
+# var()     Retorna a variância.
+# round()   Retorna o valor arredondado.
+# summary() Retorna um resumo estatístico dos dados.
+# seq()     Retorna uma sequência, sendo possível controlar a que passo a sequência cresce.
+# rep()     Retorna uma sequencia de repetições. 
 
 # As funções podem receber argumentos, que são usados para passar dados para a função. 
 
