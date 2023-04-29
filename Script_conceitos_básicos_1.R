@@ -145,7 +145,7 @@ print(Temp1)
 ## Exibição concomitante:
 Temp1; Temp2; Temp3; Temp4
 
-# Regras para nomear variáveis em R/RStudio:
+# Regras para nomear variáveis na linguagem R:
 ## a) Devem sempre começar com uma letra ou um ponto. 
 ## b) Se iniciar com ponto, não pode ser seguido de um número.
 ## c) Os nomes das variáveis não podem conter espaços em branco. Para separar 
