@@ -3,12 +3,23 @@
 #          PROJETO "PROCESSAMENTO E ANÁLISE DE DADOS AMBIENTAIS COM R"         #
 #                        Contato: pexcca.lamet@uenf.br                         #
 #                       https://linktr.ee/pexcca.lamet                         #
-#                       Script atualizado em 27/04/2023                        #
+#                       Script atualizado em 29/04/2023                        #
 #==============================================================================#
 
 #                        LINGUAGEM R: CONCEITOS BÁSICOS                        # 
 
 #-------------------------------------------------------------------------------
+# TÓPICOS ABORDADOS:
+# 1. INTRODUÇÃO
+# 2. DIRETÓRIO DE TRABALHO
+# 3. AJUDA DO R
+# 4. VARIÁVEIS E ATRIBUIÇÕES
+# 5. OPERAÇÕES BÁSICAS
+# 6. OPERADORES RELACIONAIS
+# 7. FUNÇÕES BÁSICAS
+# 8. TIPOS E ESTRUTURAS DE DADOS
+
+# 1. INTRODUÇÃO ----------------------------------------------------------------
 # R é uma linguagem de programação e ambiente de software gratuito, livre e código 
 # aberto (open source). 
 
@@ -49,17 +60,17 @@
 # h) Para salvar o script, clique em File > Save As..., dê um nome ao arquivo e
 # inclua a extensão .R (editor de texto do R).
 
-# 1. DIRETÓRIO DE TRABALHO -----------------------------------------------------
+# 2. DIRETÓRIO DE TRABALHO -----------------------------------------------------
 # O diretório de trabalho é uma pasta no seu computador que interage com o R/RStudio.
 
-# 1. Definindo o diretório de trabalho.
-# 1.1 Manualmente: 
+# 2. Definindo o diretório de trabalho.
+# 2.1 Manualmente: 
 ## Session > Set Working Directory > Choose Directory
 
-# 1.2 Por atalho de teclado:
+# 2.2 Por atalho de teclado:
 ## Ctrl + Shift + H
 
-# 1.3 Com funções:
+# 2.3 Com funções:
 getwd() # Informa o diretório de trabalho atual.
 setwd() # Seta um local como novo diretório.
 dir()   # Lista os arquivos dentro do diretório de trabalho.
@@ -67,7 +78,7 @@ dir()   # Lista os arquivos dentro do diretório de trabalho.
 ## Nota: Na função setwd(), devemos usar a barra oblíqua (/) para definir o caminho.
 ## Exemplo: setwd("C:/Users/Documentos/R")
 
-# 2. AJUDA DO R ----------------------------------------------------------------
+# 3. AJUDA DO R ----------------------------------------------------------------
 # Para descobrir o nome de uma função que faça aquilo que você deseja, use a 
 # a função help.search() e pesquise usando palavras-chave em inglês, pois o R é
 # desenvolvido em língua inglesa.
@@ -105,7 +116,7 @@ help(mean)
 # j ) Examples - exemplos do uso da função. 
 ### Dica: Copie e cole os exemplos no R/RStudio para ver como funciona.
 
-# 3. VARIÁVEIS E ATRIBUIÇÕES ---------------------------------------------------
+# 4. VARIÁVEIS E ATRIBUIÇÕES ---------------------------------------------------
 # As variáveis permitem armazenar valores, incluindo objetos, em um local da 
 # memória do software. Para acessar a informação armazenada, basta usar o nome da 
 # variável que a contém. 
@@ -153,8 +164,9 @@ rm(Temp2)           # Também remove variável(eis) ou objeto(s) especificado(s)
 rm(Temp3, Temp4)                 
 remove(list = ls()) # Remove todas as variáveis (e outros objetos) criadas na sessão.
 
-# 4. OPERAÇÕES BÁSICAS ---------------------------------------------------------
-
+# 5. OPERAÇÕES BÁSICAS ---------------------------------------------------------
+# Os símbolos da linguagem R para realizar as operações matemáticas básicas são os
+# mesmos das calculadoras científicas: + (adição), * (multiplização), / (divisão) e - (subtração).
 100 + 50    # Soma
 100 - 50    # Subtração
 100 * 50    # Multiplicação
@@ -162,8 +174,11 @@ remove(list = ls()) # Remove todas as variáveis (e outros objetos) criadas na s
 2 ^ 4       # Potenciação
 2 ** 4      # Potenciação
 sqrt(9)     # Raiz quadrada
+log(4)      # Função logarítmica
 
-# 5. OPERADORES RELACIONAIS ----------------------------------------------------
+# Nota: log() e sqrt() são funções do R.
+
+# 6. OPERADORES RELACIONAIS ----------------------------------------------------
 # Os operadores relacionais relacionam dois elementos e retorna um valor lógico.
 # Valores lógicos: TRUE(verdadeiro) e FALSE(falso).
 # Frequentemente utilizados para testar condições e criar expressões condicionais.
@@ -185,7 +200,7 @@ sqrt(9)     # Raiz quadrada
 3 != 6  # 3 é diferente de 6?
 0 != 0  # 0 é diferente de 0?
 
-# 6. FUNÇÕES BÁSICAS ---------------------------------------------------------
+# 7. FUNÇÕES BÁSICAS ---------------------------------------------------------
 # As funções são blocos de códigos que executam tarefas específicas, sejam elas 
 # de matemática, estatística, para leitura e manipulação de dados ou arquivos, etc.
 
@@ -219,9 +234,8 @@ rep(seq(0, 10, 2), 3)             # Repete a sequência de 0 a 10 com passo 2 tr
 
 # Nota: Os argumentos de uma função são sempre separados por vírgulas.
 
-# 7. TIPOS E ESTRUTURAS DE DADOS -----------------------------------------------
-
-# 7.1 Vetor (vector): sequência de dados de um mesmo tipo.
+# 8. TIPOS E ESTRUTURAS DE DADOS -----------------------------------------------
+# 8.1 Vetor (vector): sequência de dados de um mesmo tipo.
 # Para criarmos um vetor no R a função utilizada é c().
 # Função "c()" (concatenar ou combinar).
 
@@ -238,7 +252,7 @@ length(vc)
 # Nota: Os caracteres ou cadeias de texto devem ser colocados entre aspas 
 # simples ' ' ou duplas " ".
 
-# 7.2 Matriz (matrix): é uma tabela organizada em linhas e colunas no formato m x n,
+# 8.2 Matriz (matrix): é uma tabela organizada em linhas e colunas no formato m x n,
 # com uma estrutura de dados homogêneas (armazenam o mesmo tipo de dados).
 
 # Para criarmos uma matriz no R a função utilizada é matrix().
@@ -255,7 +269,7 @@ mtx
 dim(mtx)        # Retorna a dimensão da matriz (Nº Linhas, Nº Colunas).
 is.matrix(mtx)  # Verifica se é uma matriz e retorna TRUE ou FALSE.
 
-# 7.3 Data frames: são tabelas em que cada coluna pode armazenar um tipo de dado diferente.
+# 8.3 Data frames: são tabelas em que cada coluna pode armazenar um tipo de dado diferente.
 
 # É possível criar um data frame com a função data.frame():
 (df <- data.frame(vn, vc))
