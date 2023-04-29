@@ -6,7 +6,7 @@
 #                       Script atualizado em 29/04/2023                        #
 #==============================================================================#
 
-#                        LINGUAGEM R: CONCEITOS BÁSICOS                        # 
+#                   LINGUAGEM R: CONCEITOS BÁSICOS (PARTE 1)                   # 
 
 #-------------------------------------------------------------------------------
 # TÓPICOS ABORDADOS:
