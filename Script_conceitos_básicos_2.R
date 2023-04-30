@@ -33,30 +33,30 @@ install.packages("writexl") # Instala o pacote "writexl".
 
 # Após a instalação, o pacote deve ser carregado. 
 # Podemos usar a função library(nome_do_pacote) ou require(nome_do_pacote).
-library(writexl)  # Carrega o pacote.
-require(writexl)  # Carrega o pacote.
+library(writexl)            # Carrega o pacote.
+require(writexl)            # Carrega o pacote.
 
 # A função library(), por padrão, retorna um erro quando o pacote não está instalado. 
 # A função require() retorna um warning caso o pacote não esteja instalado.
 
-search()          # Retorna todos os pacotes carregados.
+search()                    # Retorna todos os pacotes carregados.
 
 # Nota: Podemos descarregar um pacote com a função detach("package:nome_do_pacote").
 
-ls("package:writexl")   # Lista os comandos do pacote.
+ls("package:writexl")       # Lista os comandos do pacote.
 
 # 2. BASES DE DADOS NATIVAS DO R -----------------------------------------------
 # O R possui diversas bases de dados que podem ser exploradas para estudar a linguagem.
 
-data()                  # Retorna todas as bases de dados do R.
+data()                      # Retorna todas as bases de dados do R.
 
 # Vamos utilizar a base de dados airquality.
-data(airquality)        # Carrega a base de dados.
-View(airquality)        # Apresenta a base de dados em uma aba.
+data(airquality)            # Carrega a base de dados.
+View(airquality)            # Apresenta a base de dados em uma aba.
 
-head(airquality, n = 5) # Retorna as primeiras n linhas (por padrão 6 linhas). 
-tail(airquality, n = 5) # Retorna as últimas n linhas (por padrão 6 linhas). 
-str(airquality)         # Retorna uma síntese da estrutura da base de dados.
+head(airquality, n = 5)     # Retorna as primeiras n linhas (por padrão 6 linhas). 
+tail(airquality, n = 5)     # Retorna as últimas n linhas (por padrão 6 linhas). 
+str(airquality)             # Retorna uma síntese da estrutura da base de dados.
 
 # 3. IMPORTAÇÃO E EXPORTAÇÃO DE DADOS ------------------------------------------
 # A importação de dados funciona como upload de arquivos externos. 
@@ -182,8 +182,8 @@ head(dados_df)
 # Vamos usar o conjunto de dados airquality.
 dados <- airquality
 
-str(dados)     # Retorna uma síntese da estrutura da base de dados.
-names(dados)   # Lista os nomes das colunas.
+str(dados)          # Retorna uma síntese da estrutura da base de dados.
+names(dados)        # Lista os nomes das colunas.
 
 # Para alterar os nomes das colunas, basta atribuir um vetor com novos nomes à função names().
 names(dados) <- c("O3", "R.Solar", "Vento", "Temp", "Mes", "Dia")  
@@ -192,26 +192,26 @@ names(dados) <- c("O3", "R.Solar", "Vento", "Temp", "Mes", "Dia")
 # Podemos acessar os elementos usando o $ ou pela sua posição.
 
 ### Usando o $:
-dados$O3        # Retorna os dados da coluna O3.
-dados$R.Solar   # Retorna os dados da coluna R.Solar.
+dados$O3            # Retorna os dados da coluna O3.
+dados$R.Solar       # Retorna os dados da coluna R.Solar.
 
 ### Usando [ ]: dados[Linhas, Colunas]. 
-dados[1, ]        # Retorna a primeira linha da tabela.
-dados[ ,1]        # Retorna a primeira coluna da tabela
-dados[1:10, ]     # Retorna os dados da linha 1 até a linha 10.
-dados[, c(2,4)]	  # Retorna os dados das colunas 2 e 4.
-dados[, -1]       # Retorna todos os dados, exceto os da coluna 1.
+dados[1, ]           # Retorna a primeira linha da tabela.
+dados[ ,1]          # Retorna a primeira coluna da tabela
+dados[1:10, ]       # Retorna os dados da linha 1 até a linha 10.
+dados[, c(2,4)]	    # Retorna os dados das colunas 2 e 4.
+dados[, -1]         # Retorna todos os dados, exceto os da coluna 1.
 
 # Também podemos informar o nome da coluna dentro dos colchetes:
-dados["O3"]      # Imprime a coluna Ozone da tabela
+dados["O3"]         # Imprime a coluna Ozone da tabela
 
 ## 4.2 Modificando e criando novas colunas ---
 # Ao utilizar o $ com um nome que não existente na tabela de dados, será criado
 # uma nova coluna.
 
 # Os dados do conjunto airquality são medições diárias da qualidade do ar em 
-# Nova York, de maio a setembro de 1973. Vamos acrescentar a coluna Ano.
-
+# Nova York, de maio a setembro de 1973. 
+# Portanto, vamos acrescentar a coluna Ano no conjunto de dados:
 dados$Ano <- 1973   # Cria a coluna Ano no objeto dados.
 head(dados)
 
@@ -225,7 +225,7 @@ class(Vetor_Datas)    # Verifica a classe do objeto.
 
 # Para converter uma data de texto (character) em data, podemos usar a função as.Date().
 dados$Data <- as.Date(Vetor_Datas)
-class(dados$Data)    # Verifica a classe do objeto.
+class(dados$Data)     # Verifica a classe do objeto.
 head(dados)
 
 ## 4.3 Filtrando dados ---
@@ -247,7 +247,7 @@ dados_f2
 dados_f3 <- 
   subset(x = dados, 
          subset = Temp > 92,           
-         select = c(Data, O3)) # Seleciona colunas da tabela de dados.        
+         select = c(Data, O3))  # Seleciona colunas da tabela de dados.        
 dados_f3                     
 
 ## 4.6 Criando sumários ----
@@ -271,7 +271,7 @@ by(data = dados$R.Solar,
 Temp.med <- 
   tapply(X = dados$Temp,      # Variável a ser aplicada a função.
          INDEX = dados$Mes,   # Fator/categoria para agrupar os dados.
-         FUN = max)          # A função a ser aplicada
+         FUN = max)           # A função a ser aplicada
 Temp.med
 
 ### Podemos ocultar os argumentos ao passar os vetores e a função na ordem correta.
@@ -354,9 +354,9 @@ barplot(
 # Podemos usar a função png() ou jpeg() do R base. 
 
 # Exemplo 1:
-png("Gráfico_1.png")        # Inicia o comando para salvar o gráfico.
-plot(dados$Temp, dados$O3)  # Plota o gráfico.
-dev.off()                   # Finaliza o comando para salvar o gráfico.
+png("Gráfico_1.png")            # Inicia o comando para salvar o gráfico.
+plot(dados$Temp, dados$O3)      # Plota o gráfico.
+dev.off()                       # Finaliza o comando para salvar o gráfico.
 
 # Exemplo 2:
 png(filename = "Gráfico_2.png",   
@@ -371,10 +371,12 @@ dev.off()                       # Finaliza o processo.
 # Podemos personalizar alguns parâmetros gráficos com a função par().
 
 par(
-  mfrow = c(1, 3),    # Define o Layout 1x3.
-  bg = "gray",        # Define a cor do fundo do gráfico.
-  pty = "s")          # Define o formato do gráfico.
+  mfrow = c(1, 3),              # Define o Layout 1x3.
+  bg = "gray",                  # Define a cor do fundo do gráfico.
+  pty = "s")                    # Define o formato do gráfico.
 
 barplot(Temp.med)
 barplot(Temp.max)
 barplot(Temp.min)
+
+#------------------------https://linktr.ee/pexcca.lamet------------------------#
