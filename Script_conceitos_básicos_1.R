@@ -165,8 +165,8 @@ rm(Temp3, Temp4)
 remove(list = ls()) # Remove todas as variáveis (e outros objetos) criadas na sessão.
 
 # 5. OPERAÇÕES BÁSICAS ---------------------------------------------------------
-# Os símbolos da linguagem R para realizar as operações matemáticas básicas são os
-# mesmos das calculadoras científicas: + (adição), * (multiplização), / (divisão) e - (subtração).
+# Os símbolos da linguagem R para realizar as operações matemáticas básicas são os mesmos
+# das calculadoras científicas: + (adição), * (multiplização), / (divisão) e - (subtração).
 100 + 50    # Soma
 100 - 50    # Subtração
 100 * 50    # Multiplicação
