@@ -3,7 +3,7 @@
 #          PROJETO "PROCESSAMENTO E ANÁLISE DE DADOS AMBIENTAIS COM R"         #
 #                        Contato: pexcca.lamet@uenf.br                         #
 #                       https://linktr.ee/pexcca.lamet                         #
-#                       Script atualizado em 29/04/2023                        #
+#                       Script Atualizado em 29/04/2023                        #
 #==============================================================================#
 
 #                   LINGUAGEM R: CONCEITOS BÁSICOS (PARTE 1)                   # 
