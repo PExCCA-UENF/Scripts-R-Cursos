@@ -3,7 +3,7 @@
 #          PROJETO "PROCESSAMENTO E ANÁLISE DE DADOS AMBIENTAIS COM R"         #
 #                        Contato: pexcca.lamet@uenf.br                         #
 #                       https://linktr.ee/pexcca.lamet                         #
-#                       Script atualizado em 30/04/2023                        #
+#                       Script atualizado em 01/05/2023                        #
 #==============================================================================#
 
 #                   LINGUAGEM R: CONCEITOS BÁSICOS (PARTE 2)                   # 
@@ -331,7 +331,7 @@ barplot(
   height = Temp.med,                    # Variável a ser plotada.
   col = "cyan",                         # Cor das barras.
   ylim = c(0, 100),                     # Limites do eixo y.
-  names.arg = month.abb[5:9],           # Nomeando barras.
+  names.arg = month.abb[5:9],           # Nomeando as barras.
   main = "Temperaturas Médias Mensais", # Título do gráfico.
   ylab = "Temperatura (°F)")            # Título do eixo Y.
   
