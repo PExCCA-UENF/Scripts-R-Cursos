@@ -271,7 +271,7 @@ by(data = dados$R.Solar,
 Temp.med <- 
   tapply(X = dados$Temp,      # Variável a ser aplicada a função.
          INDEX = dados$Mes,   # Fator/categoria para agrupar os dados.
-         FUN = max)           # A função a ser aplicada
+         FUN = max)           # A função a ser aplicada.
 Temp.med
 
 ### Podemos ocultar os argumentos ao passar os vetores e a função na ordem correta.
