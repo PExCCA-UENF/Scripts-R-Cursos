@@ -376,7 +376,7 @@ mapaBR.UC2
 # install.packages('ggspatial')   # instalando o pacote 'ggspatial'.
 library(ggspatial)                # Carregando o pacote.
 
-MapaUC.f <- 
+mapaBR.UC3 <- 
   mapaBR.UC2 +
   ggspatial::annotation_scale(
     location = 'bl',                           # Localização da escala gráfica.
@@ -391,15 +391,15 @@ MapaUC.f <-
     style = north_arrow_fancy_orienteering(    # Tipo de seta.
       fill = c('grey40', 'white'),             # Cores de preenchimento da seta.
       line_col = 'grey20'))                    # Cor  das linhas da seta.
-MapaUC.f
+mapaBR.UC3
 
 # Podemos exportar o mapa como imagem usando a função ggsave().
 ggplot2::ggsave(                       
-  filename = 'Mapa_UC.png',    # Nome do arquivo e formato que será salvo.
-  plot = MapaUC.f,             # Nome do objeto na qual o mapa está armazenado.
-  width = 1080,                # Largura da imagem.
-  height = 864,                #Altura da imagem.
-  units = 'px',                # Unidade ("px" (pixel), "in" (polegada), "cm", "mm")
-  scale = 3)                   # Multiplica os valores de altura e largura da imagem.
+  filename = 'Mapa_UC.png',      # Nome do arquivo e formato que será salvo.
+  plot = mapaBR.UC3,             # Nome do objeto na qual o mapa está armazenado.
+  width = 1080,                  # Largura da imagem.
+  height = 864,                  # Altura da imagem.
+  units = 'px',                  # Unidade ("px" (pixel), "in" (polegada), "cm", "mm")
+  scale = 3)                     # Multiplica os valores de altura e largura da imagem.
 
 #------------------------https://linktr.ee/pexcca.lamet------------------------#
