@@ -158,8 +158,8 @@ plot(x = tab.sf$geometry,
 sf::st_crs(x = tab.sf)   # Sistema de Referência de Coordenadas: NA
 
 tab.sf2 <- tab.sf         # Criar um novo objeto.
-st_crs(tab.sf2) <- 4326   # Atribuindo um SRC.
-st_crs(tab.sf2)
+sf::st_crs(tab.sf2) <- 4326   # Atribuindo um SRC.
+sf::st_crs(tab.sf2)
 
 # Transformações do Sistema de Referência de Coordenadas (SRC).
 # Para realizar uma conversão ou transformação de coordenadas, podemos usar a função st_transform():
@@ -220,10 +220,12 @@ unzip(zipfile = dest_file1,   # Arquivo que será executado.
 dir(dest_file2)  # Lista os arquivos do dest_file2.
 
 # Para ler os arquivos do tipo shapefile (.shp) vamos usar a função st_read() do pacote 'sf'.
-UC <- st_read(dsn = file.path(dest_file2, layer = "conservation_units_legal_amazon.shp")) 
+UC <- sf::st_read(dsn = file.path(dest_file2, 
+                                  layer = "conservation_units_legal_amazon.shp")) 
 
 str(UC)  # Retorna a estrutura do objeto.
-plot(UC$geometry, axes = TRUE)
+plot(UC$geometry, 
+     axes = TRUE)
 
 # Vamos selecionar as UCs dos últimos 23 anos.
 ## 1º precisamos converter a coluna 'ano_cria' para numérica.
@@ -240,9 +242,14 @@ sort(UC$ano_cria)   # Ordenar os anos.
 
 # Vamos selecionar os dados a partir de 2000.
 UC.rec <- subset(x = UC, 
-            subset = ano_cria >= 2000)
+                 subset = ano_cria >= 2000)
 
 sort(UC.rec$ano_cria)
+
+# Podemos exportar dados shapefile usando a função st_write() do pacote 'sf'. 
+sf::st_write(UC.rec,                # Objeto que será exportado.
+             'UCs_2000_2023.shp')   # Nome e formato do arquivo que será exportado.
+
 
 # 6. CRIANDO MAPAS COM `GEOBR` E ‘GGPLOT2’.-------------------------------------#
 ## 6.1 Pacote `geobr`---#
@@ -261,8 +268,8 @@ Amazon <- geobr::read_amazon()
 plot(Amazon$geom, col = 'lightgreen')
 
 # Para plotar mais de um objeto 'sf' no mesmo plot, é importante que eles estejam no mesmo SRC.
-st_crs(BR)
-st_crs(Amazon)
+sf::st_crs(BR)
+sf::st_crs(Amazon)
 st_crs(BR) == st_crs(Amazon)
 
 ## 6.2 Pacote ‘ggplot2’---#
@@ -304,8 +311,6 @@ mapaBR.AM <- mapaBR +             # Objeto com o mapa do Brasil.
           color = 'darkgreen',    # Cor das linhas/bordas da camada.
           fill = 'lightgreen')    # Cor de preenchimento da camada.
 mapaBR.AM 
-
-#------------------------https://linktr.ee/pexcca.lamet------------------------#
 
 # Mapa das Unidades de Conservação na Amazônia Legal.
 ## Exemplo1:
@@ -363,13 +368,16 @@ mapaBR.UC2 <-
        subtitle = 'Unidades de Conservação para o período de 2000 a 2022',
        fill = NULL,
        caption = 'DATUM SIRGAS 2000 | Fonte dos dados: CNUC/MMA, 2023; IBGE, 2020 | Elaborado por @proamb.r')+
-theme_light()+
+  theme_light()+
   theme(
     plot.title = element_text(face = 'bold', size = 16, hjust = 0.5),      # Alterando a estética do título.
     plot.subtitle = element_text(face = "italic", size = 12, hjust = 0.5), # Alterando a estética do subtítulo.
     legend.position = 'right',                                             # Definindo a posição da legenda. 
     legend.text = element_text(face = 'bold', size = 8))+                  # Alterando o tamanho da fonte da legenda.
-  guides(fill = guide_legend(ncol = 1))                                    # Ajustando a legenda em n colunas.
+  guides(fill = guide_legend(ncol = 1))+                                   # Ajustando a legenda em n colunas.
+  scale_y_continuous(limits = c(-35, 6), breaks = seq(-35, 6, by = 5))+    # Alterando o eixo y.
+  scale_x_continuous(limits = c(-75, -34), breaks = seq(-75, -34, by = 5)) # Alterando o eixo x.
+
 mapaBR.UC2
 
 # Para adicionar a escala gráfica e a seta norte vamos usar funções do pacote 'ggspatial'.
@@ -403,3 +411,4 @@ ggplot2::ggsave(
   scale = 3)                     # Multiplica os valores de altura e largura da imagem.
 
 #------------------------https://linktr.ee/pexcca.lamet------------------------#
+
