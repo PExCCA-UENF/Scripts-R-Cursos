@@ -3,7 +3,7 @@
 #          PROJETO "PROCESSAMENTO E ANÁLISE DE DADOS AMBIENTAIS COM R"         #
 #                        Contato: pexcca.lamet@uenf.br                         #
 #                       https://linktr.ee/pexcca.lamet                         #
-#                       Script Atualizado em 01/07/2023                        #
+#                       Script Atualizado em 02/07/2023                        #
 #==============================================================================#
 
 #                          INTRODUÇÃO A MAPAS NO R                             # 
