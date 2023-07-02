@@ -45,8 +45,8 @@ library(sf)                # Carregando o pacote.
 p1 <- st_point(x = c(4,3))   # 2 dimensões (XY). 
 class(p1)
 
-(p2 <- st_point(c(1,1)))
-(p3 <- st_point(c(4,1)))
+(p2 <- st_point(x = c(1,1)))
+(p3 <- st_point(x =c(4,1)))
 
 # Usando a função st_multipoint() do pacote 'sf' podemos criar um objeto do tipo "multiponto".
 # Objeto do tipo "multiponto" pode armazenar mais de um ponto ao mesmo tempo.
