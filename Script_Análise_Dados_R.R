@@ -81,7 +81,6 @@ installed.packages()   # Retorna todos os pacotes instalados, local e versão.
 
 # Para instalar um pacote do R, podemos usar a função install.packages('nome_do_pacote'). 
 # install.packages('readxl')   # Se o pacote ainda não estiver instalado, remova o # e mande executar.
-
 # Nota: O pacote pode ser desinstalado com a função remove.packages('nome_do_pacote').
 
 # Após a instalação, o pacote deve ser carregado. 
@@ -103,10 +102,9 @@ ls('package:readxl')   # Lista os comandos do pacote.
 
 # Para declarar uma variável e atribuir-lhe um valor/objeto podemos usar três métodos:
 ## Símbolo de atribuição <-
+## Use o atalho ALT + - para inserir o sinal de atribuição (<-).
 Temp1 <- 25.5
 26.8 -> Temp2 #A ponta da seta está sempre voltada para o nome da variável.
-
-# Use o atalho ALT + - para inserir o sinal de atribuição (<-).
 
 ## Símbolo de atribuição =
 Temp2 = 30.2
@@ -171,7 +169,6 @@ dir('./Dados')   # Verifique os arquivos dentro da pasta 'Dados'.
 #------------------------------------------------------------------------------#
 ##	Importação de dados em .xlsx e .xls
 #	Como não tem a função no R básico, será necessário instalar e carregar o pacote readxl.
-
 # install.packages('readxl')   # Se o pacote ainda não estiver instalado, remova o # e mande executar.
 library(readxl)
 
@@ -209,7 +206,6 @@ colnames(TMED)                  # Lista os nomes das colunas.
 colnames(TMED)[2] <-'Estação'   # Alterando o nome da 2º coluna.
 
 # 6. FUNÇÕES E COMANDOS ESSENCIAIS --------------------------------------------#
-
 ## Operador pipe (%>%):
 #  O operador pipe facilita a construção e leitura de uma série de comandos interligados, 
 #  o que será essencial para o processamento e análise de dados.
@@ -221,12 +217,11 @@ library(magrittr)
 # A ideia do operador pipe %>% é usar o valor resultante da expressão do lado esquerdo 
 # como primeiro argumento da função do lado direito. 
 # Ele recebe o resultado de uma expressão e passa ele adiante.
+# Para o atalho de teclado do pipe, tecle ctrl + shift + m.
 
 # Ex.:
 head(TMED)
 TMED %>% head()
-
-# Para o atalho de teclado do pipe, tecle ctrl + shift + m.
 
 # Criando sumários:
 TMED %>% summary()   # Retorna um resumo dos dados.
@@ -541,11 +536,8 @@ write.table(x = RJ.t,                         # Nome do arquivo que será export
 
 # JPEG - Exemplo 1:
 jpeg('Boxplot_1.jpeg') # Inicia o comando para salvar o gráfico.
-
 bp6
-
 dev.off() # Finaliza o comando para salvar o gráfico.
-
 
 # JPEG - Exemplo 2:
 jpeg('Boxplot_2.jpeg',   # Inicia o comando para salvar o gráfico.
@@ -553,9 +545,7 @@ jpeg('Boxplot_2.jpeg',   # Inicia o comando para salvar o gráfico.
      height = 5,        # Altura.
      units = 'in',      # Unidade ('px' (pixel), 'in' (polegada), 'cm', 'mm')
      res = 300)         # Resolução.
-
 bp6
-
 dev.off() # Finaliza o comando para salvar o gráfico
 
 #------------------------------------------------------------------------------#
