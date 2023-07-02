@@ -64,7 +64,7 @@ mp <- st_multipoint(x = mtx)
 print(mp); class(mp)
 
 # Plotando os pontos com a função plot() do do R base:
-plot(mp, col='red', pch=19)
+plot(mp, col = 'red', pch = 19)
 
 ## 2.2 Criando linhas e multilinhas ---
 # As linhas representam uma sequência de pontos conectados.
@@ -153,6 +153,7 @@ plot(x = tab.sf$geometry,
      lty = c(1, 2, 3))                  # Alterar os tipos de linhas. 
 
 # 4. MANIPULANDO DADOS VETORIAIS------------------------------------------------#
+
 ## 4.1 Obtendo e configurando Sistema de Referência de Coordenadas (SRC) de objetos 'sf'.
 # Podemos usar a função st_crs() para obter o SRC do objeto.
 sf::st_crs(x = tab.sf)   # Sistema de Referência de Coordenadas: NA
@@ -174,7 +175,7 @@ print(R)
 plot (R$geometry)
 
 A <- subset(x = tab.sf, 
-            subset = tipo=="Avenida")
+            subset = tipo =="Avenida")
 print(A)
 plot (A$geometry)
 
@@ -252,6 +253,7 @@ sf::st_write(UC.rec,                # Objeto que será exportado.
 
 
 # 6. CRIANDO MAPAS COM `GEOBR` E ‘GGPLOT2’.-------------------------------------#
+
 ## 6.1 Pacote `geobr`---#
 # O 'geobr' é um pacote R que permite o acesso dos shapefiles do Instituto Brasileiro de Geografia e Estatística (IBGE).
 # install.packages('geobr')   # instalando o pacote 'geobr'.
