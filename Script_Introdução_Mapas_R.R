@@ -35,11 +35,10 @@
 # É um conjunto de especificações para representar objetos geométricos (como ponto,
 # linha, polígono, multiponto...) e seus atributos associados.
 
-# install.packages('sf')   # instala o pacote 'sf'.
-library(sf)                # Carrega o pacote.
+# install.packages('sf')   # instalando o pacote 'sf'.
+library(sf)                # Carregando o pacote.
 
 ## 2.1 Criando pontos e multipontos ---
-
 # Usando a função st_point() do pacote 'sf' podemos criar um ponto a partir das 
 # informações de coordenadas ou um ponto resultante de uma representação.
 
@@ -54,7 +53,7 @@ class(p1)
 
 # 1º vamos criar uma matriz com vários pontos:
 (mtx <- matrix(data = c(p1, p2, p3, p1),   # Vetor com os pontos.
-               nrow = 4))                 # Número de linhas.
+               nrow = 4))                  # Número de linhas.
 
 rownames(mtx) <- c("p1", "p2", "p3", "p1")  # Renomear as linhas.
 colnames(mtx) <- c("X", "Y")                # Renomear as colunas.
@@ -68,7 +67,6 @@ print(mp); class(mp)
 plot(mp, col='red', pch=19)
 
 ## 2.2 Criando linhas e multilinhas ---
-
 # As linhas representam uma sequência de pontos conectados.
 # A função st_linestring() do pacote 'sf' cria uma linha a partir de uma entrada especificada:
 
@@ -93,7 +91,6 @@ ML <- st_multilinestring(x = list(mp))
 print(ML); class(ML); plot(ML)
 
 ## 2.3 Criando polígonos ---
-
 # Os polígonos são usados para representar áreas. 
 # São definidos por um conjunto ordenado de pontos interligados, onde o primeiro e último ponto coincidem.
 
@@ -104,7 +101,6 @@ pol <- st_polygon(x = ML)
 print(pol); class(pol); plot(pol, col = "lightblue")
 
 ## 2.3 Medições geométricas ---
-
 # O pacote'sf' possui várias funções para obter algumas métricas.
 (d.pts <- st_distance(p1, p2))   # Retorna a menor distância entre pontos geométricos.
 (c.l <- st_length(L1))           # Retorna o comprimento de uma linha.
@@ -157,7 +153,6 @@ plot(x = tab.sf$geometry,
      lty = c(1, 2, 3))                  # Alterar os tipos de linhas. 
 
 # 4. MANIPULANDO DADOS VETORIAIS------------------------------------------------#
-
 ## 4.1 Obtendo e configurando Sistema de Referência de Coordenadas (SRC) de objetos 'sf'.
 # Podemos usar a função st_crs() para obter o SRC do objeto.
 sf::st_crs(x = tab.sf)   # Sistema de Referência de Coordenadas: NA
@@ -193,7 +188,6 @@ plot(A$geometry,
 
 # 5. ARQUIVOS VETORIAIS NO FORMATO SHAPEFILE------------------------------------#
 # O shapefile é um formato para bases de dados geoespaciais e vetoriais em sistemas de informação geográfica. 
-
 # O shapefile consiste numa coleção de arquivos de mesmo nome e terminações diferentes, armazenados no mesmo diretório. 
 # Existem três arquivos obrigatórios para o funcionamento correto de um shapefile: .shp, .shx e .dbf.  
 #   shp: armazena as entidades geométricas dos objetos;
@@ -251,11 +245,10 @@ UC.rec <- subset(x = UC,
 sort(UC.rec$ano_cria)
 
 # 6. CRIANDO MAPAS COM `GEOBR` E ‘GGPLOT2’.-------------------------------------#
-
 ## 6.1 Pacote `geobr`---#
 # O 'geobr' é um pacote R que permite o acesso dos shapefiles do Instituto Brasileiro de Geografia e Estatística (IBGE).
-# install.packages('geobr')   # instala o pacote 'geobr'.
-library(geobr)                # Carrega o pacote.
+# install.packages('geobr')   # instalando o pacote 'geobr'.
+library(geobr)                # Carregando o pacote.
 
 View(geobr::list_geobr())     # Retorna a base de dados do pacote 'geobr'.
 
@@ -274,8 +267,8 @@ st_crs(BR) == st_crs(Amazon)
 
 ## 6.2 Pacote ‘ggplot2’---#
 # O 'ggplot2' faz parte da coleção de pacotes "Tidyverse" e foi construído para visualização de dados.
-# install.packages('ggplot2')   # instala o pacote 'ggplot2'. 
-library(ggplot2)                # Carrega o pacote. 
+# install.packages('ggplot2')   # instalando o pacote 'ggplot2'. 
+library(ggplot2)                # Carregando o pacote. 
 
 # No ggplot2, os gráficos são construídos camada por camada.
 # A camada base é dada pela função ggplot(), que recebe o conjunto de dados.
@@ -338,7 +331,7 @@ color <- colorRampPalette(c('darkblue', 'purple', 'yellow4', 'orange', 'darkred'
 (cores <- color(11))
 barplot(1:11, col = cores)
 
-# Agora vamos configurar as cores do mapa:
+# Agora vamos criar o mapa e configurar as cores:
 mapaBR.UC <- ggplot() +
   geom_sf(data = BR,                       # Dados do Brasil.
           aes(fill = 'Brasil'),
@@ -372,23 +365,23 @@ mapaBR.UC2 <-
        caption = 'DATUM SIRGAS 2000 | Fonte dos dados: CNUC/MMA, 2023; IBGE, 2020 | Elaborado por @proamb.r')+
 theme_light()+
   theme(
-    plot.title = element_text(face = 'bold', size = 16, hjust = 0.5),  # Alterando a estética do título.
+    plot.title = element_text(face = 'bold', size = 16, hjust = 0.5),      # Alterando a estética do título.
     plot.subtitle = element_text(face = "italic", size = 12, hjust = 0.5), # Alterando a estética do subtítulo.
-    legend.position = 'right',                                         # Definindo a posição da legenda. 
-    legend.text = element_text(face = 'bold', size = 8))+                             # Alterando o tamanho da fonte da legenda.
-  guides(fill = guide_legend(ncol = 1))                                # Ajustando a legenda em n colunas.
+    legend.position = 'right',                                             # Definindo a posição da legenda. 
+    legend.text = element_text(face = 'bold', size = 8))+                  # Alterando o tamanho da fonte da legenda.
+  guides(fill = guide_legend(ncol = 1))                                    # Ajustando a legenda em n colunas.
 mapaBR.UC2
 
 # Para adicionar a escala gráfica e a seta norte vamos usar funções do pacote 'ggspatial'.
-# install.packages('ggspatial')   # instala o pacote 'ggspatial'.
-library(ggspatial)                # Carrega o pacote.
+# install.packages('ggspatial')   # instalando o pacote 'ggspatial'.
+library(ggspatial)                # Carregando o pacote.
 
 MapaUC.f <- 
   mapaBR.UC2 +
   ggspatial::annotation_scale(
-    location = 'bl',                          # Localização da escala gráfica.
-    bar_cols = c('darkgrey','white'),         # Cores das barras.
-    height = unit(0.2, "cm"))+                # Altura da escala gráfica.
+    location = 'bl',                           # Localização da escala gráfica.
+    bar_cols = c('darkgrey','white'),          # Cores das barras.
+    height = unit(0.2, "cm"))+                 # Altura da escala gráfica.
   ggspatial::annotation_north_arrow(
     location = 'tr',                           # Localização da seta norte. 
     pad_x = unit(0.30, 'cm'),                  # Distância da borda do eixo x.
@@ -397,16 +390,16 @@ MapaUC.f <-
     width = unit(1.0, 'cm'),                   # Largura da seta norte.
     style = north_arrow_fancy_orienteering(    # Tipo de seta.
       fill = c('grey40', 'white'),             # Cores de preenchimento da seta.
-      line_col = 'grey20'))                   # Cor  das linhas da seta.
+      line_col = 'grey20'))                    # Cor  das linhas da seta.
 MapaUC.f
 
 # Podemos exportar o mapa como imagem usando a função ggsave().
-
 ggplot2::ggsave(                       
   filename = 'Mapa_UC.png',    # Nome do arquivo e formato que será salvo.
   plot = MapaUC.f,             # Nome do objeto na qual o mapa está armazenado.
   width = 1080,                # Largura da imagem.
   height = 864,                #Altura da imagem.
   units = 'px',                # Unidade ("px" (pixel), "in" (polegada), "cm", "mm")
-  scale = 3)                     # multiplica os valores de altura e largura da imagem
-  
+  scale = 3)                   # Multiplica os valores de altura e largura da imagem.
+
+#------------------------https://linktr.ee/pexcca.lamet------------------------#
