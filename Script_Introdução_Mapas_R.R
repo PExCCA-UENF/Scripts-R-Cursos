@@ -250,7 +250,7 @@ sort(UC.rec$ano_cria)
 # install.packages('geobr')   # instalando o pacote 'geobr'.
 library(geobr)                # Carregando o pacote.
 
-View(geobr::list_geobr())     # Retorna a base de dados do pacote 'geobr'.
+View(list_geobr())     # Retorna a base de dados do pacote 'geobr'.
 
 # Podemos usar a função read_country() para baixar os dados das fronteiras do Brasil.
 BR <- geobr::read_country(year = 2020)   # 2020 é o ano do conjunto de dados. 
