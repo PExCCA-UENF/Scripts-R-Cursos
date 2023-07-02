@@ -10,14 +10,14 @@
 
 # ---------------------------------------------------------------------------- #
 # TÓPICOS ABORDADOS:
-# 1. Introdução e conceitos básicos;
+# 1. Introdução;
 # 2. Estruturas vetoriais;
 # 3. Explorando atributos de dados vetoriais;
 # 4. Manipulando dados vetoriais;
 # 5. Arquivos vetoriais no formato shapefile;
 # 6. Criando mapas com `geobr` e ‘ggplot2’.
 
-# 1. INTRODUÇÃO E CONCEITOS BÁSICOS--------------------------------------------#
+# 1. INTRODUÇÃO----------------------------------------------------------------#
 # Os dados espaciais têm dois formatos primários: raster/matricial e vector/vetorial.
 # Aqui, vamos trabalhar com arquivos vetoriais, que podem representados por pontos, linhas e polígonos. 
 
