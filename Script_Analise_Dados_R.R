@@ -196,7 +196,7 @@ TMED[ , 3]       # Retorna a terceira coluna da tabela de dados.
 TMED[, c(4,7)]   # Retorna os dados das colunas 4 e 7.
 TMED[1:7, 4:7]   # Retorna os dados das linhas 1 a 5 e colunas 4 a 7.
 
-# Podemos acessar os elementos usando o $ ou pela sua posição.
+# Também podemos acessar os elementos usando o $.
 ### Usando o $:
 TMED$UF   # Retorna os dados da coluna UF.
 
