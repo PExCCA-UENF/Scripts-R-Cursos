@@ -535,17 +535,17 @@ write.table(x = RJ.t,                         # Nome do arquivo que será export
 
 # JPEG - Exemplo 1:
 jpeg('Boxplot_1.jpeg') # Inicia o comando para salvar o gráfico.
-bp6
-dev.off() # Finaliza o comando para salvar o gráfico.
+bp6                    # Objeto que será salvo.
+dev.off()              # Finaliza o comando para salvar o gráfico.
 
 # JPEG - Exemplo 2:
-jpeg('Boxplot_2.jpeg',   # Inicia o comando para salvar o gráfico.
+jpeg('Boxplot_2.jpeg',  # Inicia o comando para salvar o gráfico.
      width = 9,         # Comprimento.
      height = 5,        # Altura.
      units = 'in',      # Unidade ('px' (pixel), 'in' (polegada), 'cm', 'mm')
      res = 300)         # Resolução.
-bp6
-dev.off() # Finaliza o comando para salvar o gráfico
+bp6                     # Objeto que será salvo.
+dev.off()               # Finaliza o comando para salvar o gráfico
 
 #------------------------------------------------------------------------------#
 # Para salvar o gráfico de forma manual:
