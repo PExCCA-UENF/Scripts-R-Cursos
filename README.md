@@ -1,16 +1,16 @@
 # Scripts dos Cursos/Minicursos
 **CONHECENDO O R:**
-[Script_Conhecendo_R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_Conhecendo_R.R) 
+[Script_Conhecendo_R.R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_Conhecendo_R.R) 
 
 **R PARA INICIANTES:**
-[Script_R_para_iniciantes_1](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_R_para_iniciantes_1.R) e 
-[Script_R_para_iniciantes_2](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_R_para_iniciantes_2.R)
+[Script_R_para_iniciantes_1.R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_R_para_iniciantes_1.R) e 
+[Script_R_para_iniciantes_2.R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_R_para_iniciantes_2.R)
 
 **INTRODUÇÃO A MAPAS NO R:**
-[Script_Introdução_Mapas_R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_Introdu%C3%A7%C3%A3o_Mapas_R.R) 
+[Script_Introdução_Mapas_R.R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_Introdu%C3%A7%C3%A3o_Mapas_R.R) 
 
 **ANÁLISE DE DADOS AMBIENTAIS NO R:**
-[Script_Analise_Dados_R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_Analise_Dados_R.R) 
+[Script_Analise_Dados_R.R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_Analise_Dados_R.R) 
 
 Sugestões, dúvidas, elogios ou críticas, envie e-mail para: pexcca.lamet@uenf.br
 
