@@ -1,3 +1,17 @@
+# Scripts dos Cursos/Minicursos
+**CONHECENDO O R:**
+
+**R PARA INICIANTES:**
+[Script_R_para_iniciantes_1](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_R_para_iniciantes_1.R) e 
+[Script_R_para_iniciantes_2](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_R_para_iniciantes_2.R)
+
+**INTRODUÇÃO A MAPAS NO R:**
+[Script_Introdução_Mapas_R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_Introdu%C3%A7%C3%A3o_Mapas_R.R) 
+
+**ANÁLISE DE DADOS AMBIENTAIS NO R:**
+[Script_Analise_Dados_R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_Analise_Dados_R.R) 
+
+
 # Direitos de uso
 Todo material deste repositório pode ser usado livremente, respeitando os direitos dos autores e fornecendo o devido reconhecimento e citação do material original.
 
