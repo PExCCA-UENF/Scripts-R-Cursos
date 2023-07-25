@@ -22,7 +22,7 @@
 # A manipulação de dados é o processo de coleta, limpeza, processamento, seleção, 
 # agregação e síntese dos dados.
 
-# Em geral, a manipulação e a visualização de dados pode ser feita com o R base, 
+# Em geral, a manipulação e a visualização de dados podem ser feita com o R base, 
 # mas o 'tidyverse' facilita as tarefas de análise de dados, além de ter melhor 
 # performance computacional. 
 
@@ -77,7 +77,7 @@
 
 # O operador pipe do pacote 'magrittr' é representado por '%>%'. 
 # A ideia principal é facilitar o processo de manipulação e transformação de dados, 
-# proporcionando uma sintaxe fluida e orientada a ações através do encadeiamento
+# proporcionando uma sintaxe fluida e orientada a ações através do encadeamento
 # de funções, evitando a criação de objetos intermediários.
 
 # Devido o grande sucesso do operador pipe, a equipe principal da linguagem R 
@@ -85,7 +85,7 @@
 # disponível à partir da versão 4.1 do R. Apesar disso, neste curso vamos usar o `%>%`.
 
 # A ideia do operador pipe é usar o valor resultante de uma expressão como 
-# primeiro argumento da próxima função, possibilitando o encadeiamento de funções.
+# primeiro argumento da próxima função, possibilitando o encadeamento de funções.
 
 # Atalho de teclado do pipe (%>%): Ctrl + Shift + M
 
@@ -106,22 +106,22 @@ url_A607 <- 'https://raw.githubusercontent.com/PExCCA-UENF/Scripts-R-Cursos/main
 url_A620 <- 'https://raw.githubusercontent.com/PExCCA-UENF/Scripts-R-Cursos/main/Manipula%C3%A7%C3%A3o%20e%20Visualiza%C3%A7%C3%A3o%20de%20Dados/dados_A620_D_2012-01-01_2022-12-31.csv'
 
 ## Para realizar a importação de maneira adequada, devemos conhecer os dados.
-## O formato dos arquivos é CSV, utiliza como separador de colunas o ";" e como 
-## separador decimal o ",". Também precisamos verificar se o arquivo tem cabeçalho 
+## O formato dos arquivos é CSV, utiliza como separador de colunas o ';' e como 
+## separador decimal o ','. Também precisamos verificar se o arquivo tem cabeçalho 
 ## e identificar como os dados ausentes estão representados. Neses arquivos, 
 ## as 10 primeiras linhas correspondem ao cabeçalho e os valores ausentes estão 
-## representados por "null". Assim, podemos usar a função `read_csv2` para realizar 
+## representados por 'null'. Assim, podemos usar a função `read_csv2` para realizar 
 ## a importação, configurando os argumentos 'skip' e 'na'.
 
 ## Vamos importar os dados da estação A607 sem o pipe:
-dados_A607 <- read_csv2(url_A607, skip = 10, na = "null")
+dados_A607 <- read_csv2(url_A607, skip = 10, na = 'null')
 
 ## Agora vamos importar os dados da estação A620 com o pipe:
 dados_A620 <- 
   url_A620 %>% 
-  read_csv2(skip = 10, na = "null")
+  read_csv2(skip = 10, na = 'null')
 
-## Esse arquivo possui dados diários de variáveis meteorológicas do municípios de 
+## Esse arquivo possui dados diários de variáveis meteorológicas do município de 
 ## Campos dos Goytacazes (RJ), para o período de 2012 a 2022. 
 
 # 4. MANIPULANDO DADOS COM ‘DPLYR’ E ‘TIDYR’-----------------------------------#
@@ -129,7 +129,7 @@ dados_A620 <-
 # install.packages('tidyverse')
 library(tidyverse)
 
-## Pacote `dplyr` ---
+## Pacote `dplyr` -------------------------------------------------------------#
 ## O pacote 'dplyr' é uma parte fundamental do `tidyverse`. Ele nos oferece um
 ## conjunto de ferramentas para manipulação e transformação de dados de forma eficiente.
 
@@ -167,3 +167,134 @@ dados_campos <-
          Tmin = `TEMPERATURA MINIMA, DIARIA (AUT)(°C)`,
          UR = `UMIDADE RELATIVA DO AR, MEDIA DIARIA (AUT)(%)`)
 print(dados_campos)
+
+### Função `filter()` ---
+### A função `filter()` permite filtrar linhas com base em critérios lógicos e 
+### outras funções. Exemplo: `==`, `>`, `<`, `!`, `|`,`is.na()`, `between(), etc.
+
+dados_campos %>%
+  filter(UR > 90)
+
+dados_campos %>%
+  filter(is.na(Prec))
+
+dados_campos %>%
+  filter(!is.na(Prec))
+
+dados_campos %>%
+  filter(between(Prec, 10, 20))
+
+### Função `arrange()` ---
+### A função `arrange()` permite ordenar as linhas de um conjunto de dados com 
+### base em uma ou mais colunas. 
+
+dados_campos %>%
+  arrange(Tmax)
+
+# Para inverter a ordem para decrescente, basta agrupar com `desc()`:
+dados_campos %>%
+  arrange(desc(Tmax))
+
+### Função `select()` ---
+### A função `select()` permite selecionar colunas específicas do conjunto de dados.
+### Para operá-la, basta informar como primeiro argumento o objeto, e logo em
+### seguida, as colunas que desejamos selecionar.
+
+dados_prec <- 
+  dados_campos %>%
+  select(Estação, Data, Prec)
+print(dados_prec)
+
+dados_temp <- 
+  dados_campos %>%
+  select(Estação, Data, Tmax:Tmin)
+print(dados_temp)
+
+### Pareando `select()` com outras funções, podemos selecionar variáveis com base 
+### em padrões presentes em seus nomes. Podemos usar, por exemplo, as funções:
+### ✓'starts_with()': Começa com um prefixo exato.
+### ✓'ends_with()': Termina com um prefixo exato.
+### ✓'contains()': Contém uma string literal.
+
+dados_campos %>%
+  select(
+    starts_with('Tm'),
+  )
+
+### Funções `separete()` e `unite()` ---
+### As funções `separate()` e `unite()` permitem separar variáveis concatenadas 
+### em uma única coluna ou uni-las, respectivamente.
+
+### Vamos separar a coluna 'Data' em 'Ano', 'Mes', 'Dia':
+prec_campos <- 
+  dados_prec %>%
+  separate(
+    col = 'Data',
+    into = c('Ano', 'Mes', 'Dia'),
+    sep = '-'
+  )
+print(prec_campos)
+
+### Para a unir as colunas 'Ano', 'Mes', 'Dia', podemos usar a função `unite()`:
+prec_campos %>%
+  unite(
+    col = 'Data',
+    c(Ano, Mes, Dia),
+    sep = '-',
+    remove = F)
+
+# Podemos usar a função 'parse_number()' do pacote 'readr' para extrair a 
+# informação numérica da coluna Dia:
+
+prec_campos$Dia <-
+  parse_number(prec_campos$Dia)
+
+## Pacote `tidyr` -------------------------------------------------------------#
+## O pacote `tidyr` possui funções voltadas para limpeza e organização de dados. 
+
+### Função `pivot_wider()` ---
+### A função `pivot_wider()` transforma as tabelas longas em curtas e amplas.
+### Pode transformar as linhas repetidas em colunas. Para isso, precisamos informar:
+### a coluna da qual obter os nomes das variáveis e a coluna da qual obter valores. 
+
+prec_campos_2 <- 
+prec_campos %>%
+  pivot_wider(
+    names_from = 'Dia',
+    values_from = 'Prec' 
+  )
+print(prec_campos_2)
+
+### Função `pivot_longer()` ---
+### A função pivot_longer() transforma as tabelas amplas em estreitas e mais longas.
+### Serve para agrupar duas ou mais colunas e seus respectivos valores em pares.
+
+prec_campos_2 %>%
+  pivot_longer(
+    cols = `1`:`31`,             # Seleciona as colunas a serem agrupadas.
+    names_to = 'Dia',            # Nome da coluna categórica. 
+    values_to = 'Precipitação'   # Nome da coluna com os valores.
+  )
+
+### Função `drop_na()` ---
+### Antes de introduzir a função `drop_na()`, é importante entender o conceito
+### de `NA`, que significa 'Not Available' (não disponível). O`NA` é utilizado 
+### para representar dados faltantes ou ausentes em um conjunto de dados. 
+### Atenção! Os `NA` não devem ser confundidas com o valor zero. 
+
+### Existem várias razões pelas quais podem ocorrer dados faltantes em conjuntos
+### de dados reais. Isso pode ser resultado de falhas em equipamentos de
+### medição, erros de entrada de dados, problemas técnicos, interrupções de energia
+### ou até mesmo a ausência de informações em determinado momento. É fundamental 
+### reconhecer que a presença de `NA` pode afetar diretamente as análises dos 
+### dados, uma vez que eles podem introduzir viés e distorcer os resultados.
+
+### A função `drop_na()` permite remover as linhas que contêm 'NA' em um conjunto de dados.
+
+tail(dados_campos, n = 12)
+
+dados_campos %>%
+  drop_na(Tmed) %>% 
+  tail(n = 12)
+
+#------------------------https://linktr.ee/pexcca.lamet------------------------#
