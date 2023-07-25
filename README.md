@@ -1,5 +1,5 @@
 # Scripts dos Cursos/Minicursos
-[**- CONHECENDO O R**](https://github.com/PExCCA-UENF/Scripts-R-Cursos/blob/main/Conhecendo%20o%20R/Script_Conhecendo_R.R) 
+[**+ CONHECENDO O R**](https://github.com/PExCCA-UENF/Scripts-R-Cursos/blob/main/Conhecendo%20o%20R/Script_Conhecendo_R.R) 
 
 [**R PARA INICIANTES**](https://github.com/PExCCA-UENF/Scripts-R-Cursos/tree/main/R%20Para%20Iniciantes)
 
