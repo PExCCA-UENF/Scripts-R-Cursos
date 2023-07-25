@@ -14,7 +14,7 @@
 # ✓ Introdução;
 # ✓ Projetos no RStudio (.RProj);
 # ✓ Operador pipe (%>%);
-# ✓ Manipulando dados com ‘tidyr’ e ‘dplyr’;
+# ✓ Manipulando dados com ‘dplyr’ e ‘tidyr’;
 # ✓ Visualização gráfica com ‘ggplot2’;
 # ✓ Extensões do ‘ggplot2’.
 
@@ -30,7 +30,7 @@
 # de dados. Todos os pacotes compartilham uma mesma filosofia de design, gramática 
 # e estrutura de dados, facilitando a programação.
 
-# Neste curso, vamos usar os pacotes: 'tidyr’, ‘dplyr’ e ‘ggplot2’. 
+# Neste curso, vamos usar os pacotes: ‘dplyr’, 'tidyr’ e ‘ggplot2’. 
 
 ### Nota: Recomendados a leitura do livro "R for Data Science" dos autores Hadley 
 ### Wickham e Garrett Grolemund, disponível em: r4ds.had.co.nz/.
@@ -98,31 +98,72 @@ round(x, digits = 2)
 ## Agora com o pipe.
 1:9 %>% sum() %>% sqrt() %>% round(digits = 2)
 
-# Exemplo 2: Fazer a importação do arquivo que será utilizado neste curso.
-# Vamos importar os dados do GitHub, no link abaixo:
-urf_file <- 'https://raw.githubusercontent.com/PExCCA-UENF/Scripts-R-Cursos/main/Manipula%C3%A7%C3%A3o%20e%20Visualiza%C3%A7%C3%A3o%20de%20Dados/Dados_Prec_INMET_A607.csv'
+# Exemplo 2: Fazer a importação dos arquivos que serão utilizados neste curso.
+# Vamos usar dados do Instituto Nacional de Meteorologia (INMET), mas vamos baixar 
+# os dados do GitHub do PExCCA-UENF:
 
-## Para realizar a importação de maneira adequada, devemos conhecer a tabela de dados.
-## Vamos importar um arquivo CSV que utiliza como separador de colunas o ";" e 
-## como separador decimal o ",". Outro ponto importante é  identificar como os
-## dados ausentes estão representados, que nesse caso estão representados por "null". 
-## Assim, podemos utilizar a função `read_csv2()` para realizar a importação, 
-## configurando apenas o argumento dos dados ausentes.
+url_A607 <- 'https://raw.githubusercontent.com/PExCCA-UENF/Scripts-R-Cursos/main/Manipula%C3%A7%C3%A3o%20e%20Visualiza%C3%A7%C3%A3o%20de%20Dados/dados_A607_D_2012-01-01_2022-12-31.csv'
+url_A620 <- 'https://raw.githubusercontent.com/PExCCA-UENF/Scripts-R-Cursos/main/Manipula%C3%A7%C3%A3o%20e%20Visualiza%C3%A7%C3%A3o%20de%20Dados/dados_A620_D_2012-01-01_2022-12-31.csv'
 
-## Primeiro, sem o pipe:
-dados_prec <- read_csv2(urf_file, na = "null")
-View(dados_prec)
+## Para realizar a importação de maneira adequada, devemos conhecer os dados.
+## O formato dos arquivos é CSV, utiliza como separador de colunas o ";" e como 
+## separador decimal o ",". Também precisamos verificar se o arquivo tem cabeçalho 
+## e identificar como os dados ausentes estão representados. Neses arquivos, 
+## as 10 primeiras linhas correspondem ao cabeçalho e os valores ausentes estão 
+## representados por "null". Assim, podemos usar a função `read_csv2` para realizar 
+## a importação, configurando os argumentos 'skip' e 'na'.
 
-## Agora com o pipe.
-dados_prec2 <- 
-  urf_file %>% 
-  read_csv2(na = "null") %>% 
-  View()
+## Vamos importar os dados da estação A607 sem o pipe:
+dados_A607 <- read_csv2(url_A607, skip = 10, na = "null")
 
-## Esse arquivo possui dados de precipitação diária de Campos dos Goytacazes (RJ),
-## para o período de 2012 a 2022. Foi obtido do Instituto Nacional de Meteorologia (INMET).
+## Agora vamos importar os dados da estação A620 com o pipe:
+dados_A620 <- 
+  url_A620 %>% 
+  read_csv2(skip = 10, na = "null")
 
-# 4. MANIPULANDO DADOS COM ‘TIDYR’ E ‘DPLYR’-----------------------------------#
+## Esse arquivo possui dados diários de variáveis meteorológicas do municípios de 
+## Campos dos Goytacazes (RJ), para o período de 2012 a 2022. 
 
-# install.packages("tidyverse")
+# 4. MANIPULANDO DADOS COM ‘DPLYR’ E ‘TIDYR’-----------------------------------#
+
+# install.packages('tidyverse')
 library(tidyverse)
+
+## Pacote `dplyr` ---
+## O pacote 'dplyr' é uma parte fundamental do `tidyverse`. Ele nos oferece um
+## conjunto de ferramentas para manipulação e transformação de dados de forma eficiente.
+
+### Função `mutate()` ---
+### A função `mutate()` permite criar novas colunas ou modificar existentes com
+### base em expressões. Também pode servir para excluir colunas, basta atribuir
+# NULL à coluna que deseja excluir.
+
+est_1 <- 
+  dados_A607 %>%
+  mutate(Estação = 'A607', .before = 'Data Medicao', ...7 = NULL)
+View(est_1)
+
+est_2 <- 
+  dados_A620 %>%
+  mutate(Estação = 'A620', .before = 'Data Medicao', ...7 = NULL)
+View(est_2)
+
+### Função 'bind_rows()'---
+### A função 'bind_rows()' permite unir dois conjuntos de dados, basta ter a mesma 
+# quantidade de campos e que estejam “alinhados.” 
+
+dados_campos <- bind_rows(est_1, est_2)
+View(dados_campos)
+
+### Função `rename()`---
+### A função `rename()` permite modificar os nomes das colunas.
+
+dados_campos <- 
+  dados_campos %>%
+  rename(Data = `Data Medicao`,
+         Prec = `PRECIPITACAO TOTAL, DIARIO (AUT)(mm)`,
+         Tmax = `TEMPERATURA MAXIMA, DIARIA (AUT)(°C)`,
+         Tmed = `TEMPERATURA MEDIA, DIARIA (AUT)(°C)`,
+         Tmin = `TEMPERATURA MINIMA, DIARIA (AUT)(°C)`,
+         UR = `UMIDADE RELATIVA DO AR, MEDIA DIARIA (AUT)(%)`)
+print(dados_campos)
