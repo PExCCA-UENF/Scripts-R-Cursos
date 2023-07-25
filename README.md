@@ -7,6 +7,8 @@
 
 [**ANÁLISE DE DADOS AMBIENTAIS NO R**](https://github.com/PExCCA-UENF/Scripts-R-Cursos/blob/main/An%C3%A1lise%20de%20Dados%20Ambientais%20/Script_Analise_Dados_R.R) 
 
+[**MANIPULAÇÃO E VISUALIZAÇÃO DE DADOS NO R**]
+
 Sugestões, dúvidas, elogios ou críticas, envie e-mail para: pexcca.lamet@uenf.br
 
 # Direitos de Uso
