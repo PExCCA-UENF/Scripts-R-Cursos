@@ -1,9 +1,7 @@
 # Scripts dos Cursos/Minicursos
 [**CONHECENDO O R**](https://github.com/PExCCA-UENF/Scripts-R-Cursos/blob/main/Conhecendo%20o%20R/Script_Conhecendo_R.R) 
 
-**R PARA INICIANTES:**
-[Script_R_para_iniciantes_1.R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_R_para_iniciantes_1.R) e 
-[Script_R_para_iniciantes_2.R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_R_para_iniciantes_2.R)
+[**R PARA INICIANTES**](https://github.com/PExCCA-UENF/Scripts-R-Cursos/tree/main/R%20Para%20Iniciantes)
 
 **INTRODUÇÃO A MAPAS NO R:**
 [Script_Introdução_Mapas_R.R](https://github.com/PExCCA-UENF/Scripts-R/blob/main/Script_Introdu%C3%A7%C3%A3o_Mapas_R.R) 
