@@ -11,10 +11,12 @@
 
 #------------------------------------------------------------------------------#
 # TÓPICOS ABORDADOS:
-# ✓ Introdução;
-# ✓ Projetos no RStudio (.RProj);
-# ✓ Operador pipe (%>%);
-# ✓ Manipulando dados com ‘dplyr’ e ‘tidyr’;
+# 1. Introdução;
+# 2. Projetos no RStudio (.RProj);
+# 3. Operador pipe (%>%);
+# 4. Manipulando dados com ‘dplyr’ e ‘tidyr’;
+# 5. Visualização gráfica com ‘ggplot2’;
+# 6. Extensões do ‘ggplot2’.
 
 # 1. INTRODUÇÃO ---------------------------------------------------------------#
 # A manipulação de dados é o processo de coleta, limpeza, processamento, seleção, 
@@ -39,27 +41,27 @@
 # de benefícios na organização e reprodução de análises. 
 
 # Alguns dos principais benefícios do Rproject:
-# 1. Organização de arquivos: Você pode organizar todos os arquivos relacionados 
+# a) Organização de arquivos: Você pode organizar todos os arquivos relacionados 
 #    a um projeto em um único diretório, facilitando a localização e o gerenciamento
 #    de scripts, dados, gráficos, relatórios e outros arquivos associados.
 
-# 2. Independência de diretórios: Cada projeto R possui seu próprio diretório de
+# b) Independência de diretórios: Cada projeto R possui seu próprio diretório de
 #    trabalho, o que significa que os caminhos para arquivos e pacotes são
 #    relativos ao diretório do projeto. Isso evita conflitos entre projetos e
 #    permite que você alterne facilmente entre projetos sem precisar reconfigurar
 #    caminhos e configurações.
 
-# 3. Controle de versão: Você pode integrar o projeto R com sistemas de controle 
+# c) Controle de versão: Você pode integrar o projeto R com sistemas de controle 
 #    de versão, como o Git, para rastrear alterações, colaborar com outros usuários 
 #    e recuperar versões anteriores do código.
 
-# 4. Facilidade de compartilhamento: Ao compartilhar um projeto R, você pode
+# d) Facilidade de compartilhamento: Ao compartilhar um projeto R, você pode
 #    incluir todos os arquivos e configurações necessários para que outras
 #    pessoas reproduzam sua análise. Isso torna mais fácil colaborar em
 #    projetos, compartilhar código e resultados, e garantir que todos estejam
 #    trabalhando no mesmo contexto.
 
-# 5. Automatização: Você pode automatizar tarefas e análises por meio de scripts
+# e) Automatização: Você pode automatizar tarefas e análises por meio de scripts
 #    e funções. Isso permite que você crie fluxos de trabalho reprodutíveis e 
 #    repetíveis, economizando tempo e minimizando erros.
 
