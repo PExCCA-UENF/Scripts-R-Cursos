@@ -6,7 +6,7 @@
 #                       Script Atualizado em 25/07/2023                        #
 #==============================================================================#
 
-#                   MANIPULAÇÃO E VISUALIZAÇÃO DE DADOS NO R                   #
+#             MANIPULAÇÃO E VISUALIZAÇÃO DE DADOS NO R - PARTE 1               #
 #                         PROGRAMANDO COM O TIDYVERSE                          #
 
 #------------------------------------------------------------------------------#
@@ -15,8 +15,6 @@
 # ✓ Projetos no RStudio (.RProj);
 # ✓ Operador pipe (%>%);
 # ✓ Manipulando dados com ‘dplyr’ e ‘tidyr’;
-# ✓ Visualização gráfica com ‘ggplot2’;
-# ✓ Extensões do ‘ggplot2’.
 
 # 1. INTRODUÇÃO ---------------------------------------------------------------#
 # A manipulação de dados é o processo de coleta, limpeza, processamento, seleção, 
