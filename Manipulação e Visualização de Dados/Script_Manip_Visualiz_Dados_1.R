@@ -114,7 +114,7 @@ url_A620 <- 'https://raw.githubusercontent.com/PExCCA-UENF/Scripts-R-Cursos/main
 ## a importação, configurando os argumentos 'skip' e 'na'.
 
 ## Vamos importar os dados da estação A607 sem o pipe:
-dados_A607 <- read_csv2(url_A607, skip = 10, na = 'null')
+dados_A607 <- read_csv2(file = url_A607, skip = 10, na = 'null')
 
 ## Agora vamos importar os dados da estação A620 com o pipe:
 dados_A620 <- 
