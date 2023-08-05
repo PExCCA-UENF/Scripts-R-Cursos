@@ -33,6 +33,11 @@ dados <-
   dplyr::mutate(Data = dmy(Data)) %>% 
   print()
 
+# Prec = PRECIPITACAO TOTAL, MENSAL(mm)
+# Tmed = TEMPERATURA MEDIA COMPENSADA, MENSAL(°C)
+# Tmin = TEMPERATURA MINIMA MEDIA, MENSAL(°C)
+# Tmax = TEMPERATURA MAXIMA MEDIA, MENSAL(°C)
+
 ## Gráficos de linha ----------------------------------------------------------#
 
 ## Gráfico da temperatura média mensal para o período de 2010 a 2015.
