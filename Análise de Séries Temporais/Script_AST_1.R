@@ -11,7 +11,6 @@
 
 #------------------------------------------------------------------------------#
 # As séries temporais são observações que ocorrem periodicamente ao longo do tempo.
-
 # Objetivos da análise de séries temporais:
 # 1. Investigar o mecanismo gerador da série temporal; 
 # 2. Descrever o comportamento da série; 
@@ -26,7 +25,6 @@
 #  eixo y representa os valores da série.
 
 # MANIPULAÇÃO E ANÁLISE EXPLORATÓRIA  DE SÉRIES TEMPORAIS ---------------------#
-
 # A manipulação e a visualização de dados, em geral, podem ser feita com o R base, 
 # mas o 'tidyverse' facilita as tarefas de análise de dados, além de ter melhor 
 # performance computacional. 
