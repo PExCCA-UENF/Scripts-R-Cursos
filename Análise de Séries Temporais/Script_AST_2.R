@@ -145,12 +145,8 @@ gtt2
 # H0 (hipótese nula):  Não há tendência presente nos dados.
 # H1 (hipótese alternativa):  Há tendência nos dados. A tendência pode ser positiva ou negativa.
 
-ls('package:trend') 
-
 # Vamos usar a função mk.test() do pacote trend:
-trend::mk.test(Temp.a$Tmax)
-
-# tau mede a monotonia da inclinação.
+trend::mk.test(Temp.a$Tmax)   # tau mede a monotonia da inclinação.
 
 # Se o valor p do teste for inferior a algum nível de significância (Ex.: 1%, 5% e 10%), 
 # então há evidência estatisticamente significativa de que uma tendência está presente nos dados da série temporal.
@@ -192,7 +188,6 @@ gtt +
              fill = NA)
 
 # MODELOS DE PREVISÃO----------------------------------------------------------#
-
 # Primeiro vamos transformar as temperaturas (máxima, média e mínima) em série temporal:
 Tm_st <- 
   dados %>%
@@ -203,12 +198,10 @@ Tm_st <-
 # Dependendo do modelo utilizado, será necessário preencher os dados ausentes,
 # uma alternativa é a função 'na.StructTS', que é uma função genérica para 
 # preencher valores de NA usando filtro de Kalman sazonal.
-
 zoo::na.StructTS(Tm_st[,2])
 
 ## Com a função 'decompose' podemos fazer a decomposição de séries temporais.
 ## Podemos observar a tendência, sazonalidade e a componente aleatória da série.
-
 stats::decompose(
   zoo::na.StructTS(Tm_st[,2])) %>% 
   plot()
@@ -258,10 +251,7 @@ HWm
 ## beta: tendência
 ## gama: sazonalidade
 
-HWm$alpha
-HWm$beta
-HWm$gamma
-
+HWm$alpha; HWm$beta; HWm$gamma
 HWm$fitted   # Estimativas
 
 # Previsão para 6 meses com um intervalo de confiança de 95%.
@@ -363,7 +353,6 @@ dados.mod %>%
 # Critério de informação de Akaike - AIC
 # Critério de informação de Akaike corrigido - AICc
 # Critério de informação bayesiano - BIC
-
 ## Tais parâmetros podem e devem ser alterados a fim de buscar um melhor ajuste do modelo.
 
 # Estimando o modelo usando a função 'arima':
