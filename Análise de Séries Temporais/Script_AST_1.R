@@ -7,7 +7,7 @@
 #                       Script Atualizado em 04/08/2023                        #
 #==============================================================================#
 
-#                 ANÁLISE DE S1ÉRIES TEMPORAIS NO R - PARTE 1                   #
+#                 ANÁLISE DE SÉRIES TEMPORAIS NO R - PARTE 1                   #
 
 #------------------------------------------------------------------------------#
 # As séries temporais são observações que ocorrem periodicamente ao longo do tempo.
