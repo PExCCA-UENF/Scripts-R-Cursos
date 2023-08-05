@@ -269,8 +269,8 @@ dados_anom %>%
 plot_anom
 
 ggplot2::ggsave(plot = plot_anom, 
-                filename = "anom_temp.png",
-                width = 9, height = 5, units = "in", bg = "#FCF9F7")
+                filename = 'anom_temp.png',
+                width = 9, height = 5, units = 'in', bg = '#FCF9F7')
 
 ### A função `ggsave()` permite salvar gráficos criados em arquivos externos em
 ### diversos formatos, como PNG, JPEG, PDF, SVG e outros.
