@@ -98,7 +98,7 @@ gta3 <-
   gta2 +
   geom_ribbon(aes(x = Ano, 
                   ymin = Tmax - sd(Tmax, na.rm = T), 
-                  ymax = Tmax - sd(Tmax, na.rm = T),
+                  ymax = Tmax + sd(Tmax, na.rm = T),
                   fill = 'Tmax'),
               alpha = 0.1) +
   scale_fill_manual(name = '', values ='red', labels = 'Desvio Padrão') +
