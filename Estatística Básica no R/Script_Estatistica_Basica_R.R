@@ -298,7 +298,6 @@ Tmax_anual$Tmax_a %>%
   stats::shapiro.test()
 
 ## Avaliando os pressupostos do teste-t: Homocedasticidade.
-
 ## Hipótese do teste:
 ##  H0 (hipótese nula): as variâncias são iguais.
 ##  H1 (hipótese alternativa): as variâncias não são iguais.
