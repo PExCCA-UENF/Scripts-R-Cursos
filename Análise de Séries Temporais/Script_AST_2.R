@@ -167,11 +167,11 @@ S$estimates  # Magnitude da tendência estimada.
 S$p.value    # Valor p. 
 
 ## Teste de Pettitt---#
-# Verifica a presença de mudança na tendência de uma série temporal.
+# Verifica se há mudança brusca nos dados, ou seja, um ponto de descontinuidade na série.
 
 # Hipóteses do teste
-# H0: Não há mundança na tendência da série.
-# H1: Há mundança na tendência da série.
+# H0: Não há mundança (um ponto de descontinuidade) na série.
+# H1: Há mundança (um ponto de descontinuidade) da série.
 
 # Verificando quebra estrutura na série temporal:
 Pett.Tmax <- Temp.a$Tmax %>% 
