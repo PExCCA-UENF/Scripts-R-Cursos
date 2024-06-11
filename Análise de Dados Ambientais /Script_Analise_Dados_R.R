@@ -187,8 +187,8 @@ str(TMED)    # Retorna uma síntese da estrutura da base de dados.
 #	4. Também são apresentadas a dimensão da tabela e as classes de cada coluna.
 #	5. dbl (double): com precisão dupla, que armazena a parte fracionária com maior precisão.
 
-head(TMED, n = 5)     # Retorna as primeiras n linhas (por padrão 5 linhas). 
-tail(TMED, n = 5)     # Retorna as últimas n linhas (por padrão 5 linhas). 
+head(TMED, n = 5)     # Retorna as primeiras n linhas (por padrão 6 linhas). 
+tail(TMED, n = 5)     # Retorna as últimas n linhas (por padrão 6 linhas). 
 
 ### Podemos acessar os elementos usando [ ]: dados[Linhas, Colunas]. 
 TMED[ , 3]       # Retorna a terceira coluna da tabela de dados.
