@@ -9,17 +9,6 @@
 
 #                           INTRODUÇÃO À LINGUAGEM R                           #
 
-#------------------------------------------------------------------------------#
-# TÓPICOS ABORDADOS:
-# 1. INTRODUÇÃO: R E RSTUDIO;
-# 2. ESTRUTURAS BÁSICAS DA LINGUAGEM R;
-# 3. CRIANDO PROJETOS NO RSTUDIO (.RPROJ);
-# 4. IMPORTAÇÃO E EXPORTAÇÃO DE DADOS;
-# 5. MANIPULAÇÃO E PROCESSAMENTO DE DADOS COM OS PACOTES ‘DPLYR’ E ‘TIDYR’;
-# 6. TRABALHANDO COM DATAS COM O PACOTE ‘LUBRIDATE’;
-# 7. VISUALIZAÇÃO DE DADOS COM O PACOTE ‘GGPLOT2’;
-# 8. EXPORTAÇÃO DOS RESULTADOS.
-
 # 1. INTRODUÇÃO: R E RSTUDIO --------------------------------------------------#
 # R é uma linguagem de programação e ambiente de software gratuito, livre e código
 # aberto (open source).
