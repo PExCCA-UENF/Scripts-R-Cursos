@@ -108,6 +108,13 @@
 ## b) Por padrão, o separador decimal utilizado é o ponto (.).
 ## c) A vírgula (,) é reservada para separar diferentes objetos dentro de uma função.
 
+## Listagem e remoção de objetos:
+ls()                # Lista todos os objetos armazenadas.
+remove(Temp1)       # Remove o objeto especificado. 
+rm(Temp2)           # Também remove o objeto especificado. 
+rm(impar, par)      # Remove os objetos especificados.           
+remove(list = ls()) # Remove todos os objetos criados na sessão.
+
 ## 2.2 Funções (noções básicas) ---#
 
 ## As funções são blocos de códigos que executam tarefas específicas, sejam elas
