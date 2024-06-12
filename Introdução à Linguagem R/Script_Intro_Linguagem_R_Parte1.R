@@ -7,7 +7,7 @@
 #                       Script Atualizado em 12/06/2024                        #
 #==============================================================================#
 
-#                           INTRODUÇÃO À LINGUAGEM R                           #
+#                      INTRODUÇÃO À LINGUAGEM R - PARTE 1                      #
 
 # 1. INTRODUÇÃO: R E RSTUDIO --------------------------------------------------#
 # R é uma linguagem de programação e ambiente de software gratuito, livre e código
