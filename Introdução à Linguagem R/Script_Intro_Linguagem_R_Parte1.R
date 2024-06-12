@@ -150,6 +150,11 @@ remove(list = ls()) # Remove todos os objetos criados na sessão.
   # seq()     Retorna uma sequência, sendo possível controlar a que passo a sequência cresce.
   # rep()     Retorna uma sequência de repetições.
 
+## No R, os operadores aritméticos também são funções, mas, eles representam um tipo especial de função.
+## Podemos escrever esses operadores da forma “tradicional” ou como as demais funções no R são escritas.
+## Exemplos:
+`+`(2, 3)
+
 ## 2.3 Ajuda do R ---#  
 
 ## Para ver os arquivos de ajuda do R, use o help(nome_da_função) ou ?nome_da_funcão.
