@@ -1,9 +1,10 @@
+
 #==============================================================================#
 #          EXTENSÃO UNIVERSITÁRIA EM CIÊNCIAS CLIMÁTICAS E AMBIENTAIS          #
 #          PROJETO "PROCESSAMENTO E ANÁLISE DE DADOS AMBIENTAIS COM R"         #
 #                        Contato: pexcca.lamet@uenf.br                         #
 #                       https://linktr.ee/pexcca.lamet                         #
-#                       Script Atualizado em 10/06/2024                        #
+#                       Script Atualizado em 12/06/2024                        #
 #==============================================================================#
 
 #                           INTRODUÇÃO À LINGUAGEM R                           #
@@ -32,9 +33,9 @@
 
 # INFORMAÇÕES IMPORTANTES
 # a) A interface do RStudio é dividida, inicialmente, em 3 partes:
- # 1° - Console
- # 2° - Environment, History...
- # 3° - Files, Plots, Packages, Help...
+# 1° - Console
+# 2° - Environment, History...
+# 3° - Files, Plots, Packages, Help...
 
 # b) O console fica do lado esquerdo, onde os comandos podem ser digitados e onde
 # ficam os outputs. O símbolo > no canto esquerdo do console significa que o software
@@ -78,31 +79,31 @@
 ## que pode posteriormente ser manipulado. Para isso, usamos a expressão de atribuição “<-”.
 
 ## Em suma, os nomes dos objetos podem conter os seguintes tipos de caracteres: 
- # Letras;
- # Números;
- # _(underline);
- # •(ponto).
+# Letras;
+# Números;
+# _(underline);
+# •(ponto).
 
 ## O nome de um objeto deve sempre começar com uma letra ou um ponto (desde que não seja seguido por um número).
 ## O nome de um objeto não deve começar por: _(underline), número ou ponto seguido de um número.
 
 ## Exemplo: 
-  Temp1 <- 25.5   # lê-se "Temp1 recebe 25.5"
-  
+Temp1 <- 25.5   # lê-se "Temp1 recebe 25.5"
+
 ## Ao executarmos o comando acima, o resultado não será mostrado na tela, mas o objeto Temp1 
 ## foi criado na memória do computador. Para exibirmos o conteúdo de Temp1, basta digitar o 
 ## nome do objeto na linha de comando e pressionar Enter.
 
 ## Também podemos utilizar a seta invertida, mas a ponta dela deve sempre estar apontada
 ## para o nome do objeto.
-  26.8 -> Temp2
+26.8 -> Temp2
 
 ## O "=" também pode ser utilizado para atribuição dos objetos, mas desencorajamos 
 ## seu uso para evitar ambiguidade com outros termos da linguagem R.
-  
+
 ## Para utilizar os valores que estão armazenados em algum objeto, você precisa apenas 
 ## utilizar o nome que você deu a esse objeto.
-  
+
 # Nota:
 ## a) A linguagem R diferencia letras maiúsculas de letras minúsculas.
 ## b) Por padrão, o separador decimal utilizado é o ponto (.).
@@ -124,36 +125,60 @@ remove(list = ls()) # Remove todos os objetos criados na sessão.
 
 ## Exemplo 1: sum(..., na.rm = FALSE)
 ## Retorna a soma de todos os valores presentes em seus argumentos.
-  sum(1, 2, 3, 4, 5)
-  sum(1, 2, NA) 
-  sum(1, 2, NA, na.rm = TRUE)
+sum(1, 2, 3, 4, 5)
+sum(1, 2, NA) 
+sum(1, 2, NA, na.rm = TRUE)
 
 ## Por padrão, se houver valores ausentes (NA), ao calcular estatísticas básicas, o resultado será NA.
 ## Para realizar o cálculo, precisamos definir na.rm = TRUE. 
-  
+
 ## Exemplo 2: round(x, digits = 0, ...)
 ## Arredonda valores numéricos de acordo com um número de casas decimais.
-  round(1.23163)
-  round(1.23963, digits = 2)
+round(1.23163)
+round(1.23963, digits = 2)
 
 ## Exemplos de outras funções do R:
-  # mean()    Retorna a média.
-  # min()     Retorna o mínimo.
-  # max()     Retorna o máximo.
-  # range()   Retorna o mínimo e o máximo.
-  # median()  Retorna a mediana.
-  # sd()      Retorna o desvio padrão.
-  # var()     Retorna a variância.
-  # ceiling() Arredonda para um número inteiro seguinte.
-  # floor()   Arredonda para um número inteiro para baixo.
-  # summary() Retorna um resumo estatístico dos dados.
-  # seq()     Retorna uma sequência, sendo possível controlar a que passo a sequência cresce.
-  # rep()     Retorna uma sequência de repetições.
+# mean()    Retorna a média.
+# min()     Retorna o mínimo.
+# max()     Retorna o máximo.
+# range()   Retorna o mínimo e o máximo.
+# median()  Retorna a mediana.
+# sd()      Retorna o desvio padrão.
+# var()     Retorna a variância.
+# ceiling() Arredonda para um número inteiro seguinte.
+# floor()   Arredonda para um número inteiro para baixo.
+# summary() Retorna um resumo estatístico dos dados.
+# seq()     Retorna uma sequência, sendo possível controlar a que passo a sequência cresce.
+# rep()     Retorna uma sequência de repetições.
 
-## No R, os operadores aritméticos também são funções, mas, eles representam um tipo especial de função.
-## Podemos escrever esses operadores da forma “tradicional” ou como as demais funções no R são escritas.
+## No R, os operadores aritméticos também são funções, mas, eles representam um 
+## tipo especial de função. Podemos escrever esses operadores da forma “tradicional” 
+## ou como as demais funções no R são escritas.
+
+## Como as funções que representam os operadores aritméticos se iniciam por símbolos,
+## devemos  contornar os símbolos por acentos graves.
+
 ## Exemplos:
-`+`(2, 3)
+
+## Soma:
+9 + 2   
+`+`(9, 2) 
+
+## Subtração
+9 - 2
+`-`(9, 2) 
+
+## Multiplicação
+9 * 2
+`*`(9, 2)
+
+## Divisão
+9/2
+`/`(9, 2)
+
+## Potenciação
+9 ^ 2 
+`^`(9, 2)
 
 ## 2.3 Ajuda do R ---#  
 
@@ -161,22 +186,22 @@ remove(list = ls()) # Remove todos os objetos criados na sessão.
 ## Exemplo:
 help(mean)
 ?mean
-  
+
 ## Nota: Se o cursor do mouse estiver no nome da função e pressionarmos F1, a página 
 ## de ajuda da função vai abrir no quadrante "Help"".
-  
+
 ## Os arquivos de ajuda, geralmente, apresentam os seguintes tópicos:
-  # a) Description - resumo geral sobre o uso da função;
-  # b) Usage - mostra como a função deve ser usada e quais argumentos podem ser especificados;
-  # c) Arguments - descrição dos argumentos;
-  # d) Details - alguns detalhes sobre o uso e aplicação da função;
-  # e) Value - explica o que sai no output após usar a função (os resultados);
-  # f) Note - notas sobre a função;
-  # g) Authors - lista os autores da função (quem escreveu os códigos R);
-  # h) References - referências utilizadas;
-  # i) See also - mostra outras funções relacionadas que podem ser consultadas;
-  # j ) Examples - exemplos do uso da função.
-  ### Dica: Copie e cole os exemplos no R/RStudio para ver como funciona.
+# a) Description - resumo geral sobre o uso da função;
+# b) Usage - mostra como a função deve ser usada e quais argumentos podem ser especificados;
+# c) Arguments - descrição dos argumentos;
+# d) Details - alguns detalhes sobre o uso e aplicação da função;
+# e) Value - explica o que sai no output após usar a função (os resultados);
+# f) Note - notas sobre a função;
+# g) Authors - lista os autores da função (quem escreveu os códigos R);
+# h) References - referências utilizadas;
+# i) See also - mostra outras funções relacionadas que podem ser consultadas;
+# j ) Examples - exemplos do uso da função.
+### Dica: Copie e cole os exemplos no R/RStudio para ver como funciona.
 
 ## Para descobrir o nome de uma função que faça aquilo que você deseja, use a
 ## a função help.search() e pesquise usando palavras-chave em inglês, pois o R é
@@ -291,10 +316,10 @@ tail(airquality, n = 3)   # Retorna as últimas n linhas (por padrão 6 linhas).
 
 ## Atividade - Usando o conjunto de dados "airquality" responda as seguintes questões:
 
- # 1: Calcule os valores médios, máximos e mínimos da variável radiação solar (Solar.R).
- # 2. Selecione apenas as colunas referentes à temperatura (Temp) e à quantidade 
- # de ozônio (Ozone) utilizando o operador de indexação [ , ]. Armazene o resultado 
- # em um novo objeto chamado dados_sel.
+# 1: Calcule os valores médios, máximos e mínimos da variável radiação solar (Solar.R).
+# 2. Selecione apenas as colunas referentes à temperatura (Temp) e à quantidade 
+# de ozônio (Ozone) utilizando o operador de indexação [ , ]. Armazene o resultado 
+# em um novo objeto chamado dados_sel.
 
 ## 2.5 R base e pacote ---#
 
