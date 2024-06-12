@@ -159,7 +159,6 @@ round(1.23963, digits = 2)
 ## devemos  contornar os símbolos por acentos graves.
 
 ## Exemplos:
-
 ## Soma:
 9 + 2   
 `+`(9, 2) 
