@@ -48,10 +48,6 @@ setwd()
 ## Em Directory name, insira o nome para o diretório que será criado.
 ## Em seguida, clique em Browse e defina um subdiretório para o projeto, local onde será criado a pasta.
 
-## Se possuir o Git instalado, você também pode usar projetos para conectar com 
-## repositórios do Github. Para isso, clique em Version Control na primeira janela 
-## e siga as instruções lá fornecidas.
-
 # 4. IMPORTAÇÃO E EXPORTAÇÃO DE DADOS -----------------------------------------#
 
 # Neste curso, vamos utilizar as 'Normais Climatológicas' obtidas do Instituto 
