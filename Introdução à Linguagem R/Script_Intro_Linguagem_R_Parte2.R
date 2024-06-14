@@ -294,7 +294,7 @@ TMAX_INMET |>
 
 # 5.6. Filtrando dados ----#
 
-# A função `filter()` do pacote 'dplyr'permite filtrar os dados com  base em expressões 
+# A função `filter()` do pacote 'dplyr' permite filtrar os dados com  base em expressões 
 # e operadores lógicos (<, >=, !=, %in%, etc). Também podemos usar expressões que
 # avaliem condições e retornem valores lógicos, como `is.na()` e `between()`.
 
