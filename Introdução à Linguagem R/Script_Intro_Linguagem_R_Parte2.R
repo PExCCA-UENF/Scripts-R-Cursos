@@ -61,7 +61,7 @@ if(!dir.exists('Dados/')){
   dir.create('Dados')
 }
 
-# Agora vamos fazer download das Normais Climatológicas de Temperatura Máxima Mensal e Anual (°C).
+# Agora vamos fazer download das Normais Climatológicas (1991-2020) de Temperatura Máxima Mensal e Anual (°C).
 
 # Link para baixar os dados:
 url.tmax <- 'https://portal.inmet.gov.br/uploads/normais/Normal-Climatologica-TMAX.xlsx'
