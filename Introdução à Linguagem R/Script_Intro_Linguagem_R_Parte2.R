@@ -113,7 +113,7 @@ dir('./Dados')
 
 # 5. MANIPULAÇÃO E PROCESSAMENTO DE DADOS COM OS PACOTES ‘DPLYR’ E ‘TIDYR’-----#
 
-# Os pacotes `dplyr` e `dplyr` fazem parte do `tidyverse`.
+# Os pacotes `dplyr` e `tidyr` fazem parte do `tidyverse`.
 # O `tidyverse` é uma coleção de pacotes da linguagem R construídos para a ciência 
 # de dados. Todos os pacotes compartilham uma mesma filosofia de design, gramática 
 # e estrutura de dados, facilitando a programação.
