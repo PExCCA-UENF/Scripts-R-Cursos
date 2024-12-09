@@ -365,7 +365,8 @@ mapaBR.UC <- ggplot() +
                                'Reserva de Desenvolvimento Sustentável' = cores[9],
                                'Reserva Extrativista' = cores[10],
                                'Reserva Particular do Patrimônio Natural' = cores[11]),
-                    breaks = c('Brasil', 'Amazônia Legal', categorias))   # Definindo a ordem da legenda.
+                    breaks = c('Brasil', 'Amazônia Legal', unique(UC.Fil$categoria))
+                    )   # Definindo a ordem da legenda.
 mapaBR.UC
 
 # Ajustando a legenda e o tema:
@@ -375,7 +376,7 @@ mapaBR.UC2 <-
        subtitle = 'Unidades de Conservação para o período de 2000 a 2022',
        fill = NULL,
        caption = 'DATUM SIRGAS 2000 | Fonte dos dados: CNUC/MMA, 2023; IBGE, 2020 | Elaborado por @proamb.r')+
-  theme_light()+
+  theme_light() +
   theme(
     plot.title = element_text(face = 'bold', size = 16, hjust = 0.5),      # Alterando a estética do título.
     plot.subtitle = element_text(face = "italic", size = 12, hjust = 0.5), # Alterando a estética do subtítulo.
