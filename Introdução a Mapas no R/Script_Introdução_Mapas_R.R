@@ -3,7 +3,7 @@
 #          PROJETO "PROCESSAMENTO E ANÁLISE DE DADOS AMBIENTAIS COM R"         #
 #                        Contato: pexcca.lamet@uenf.br                         #
 #                       https://linktr.ee/pexcca.lamet                         #
-#                       Script Atualizado em 09/12/2024                        #
+#                       Script Atualizado em 10/12/2024                        #
 #==============================================================================#
 
 #                          INTRODUÇÃO A MAPAS NO R                             #
@@ -259,6 +259,22 @@ sf::st_write(UC.Fil,                # Objeto que será exportado.
 
 # 6. CRIANDO MAPAS COM `GEOBR` E ‘GGPLOT2’.-------------------------------------#
 
+# Preparação para plotagem
+# O pacote camcorder fornece algumas ótimas funções para auxiliar na construção de gráficos e mapas.
+# Ele permite visualizar o produto final já em escala, considerando a resolução desejada no final do processo.
+# Vamos instalar o pacote e utilizar suas funcionalidades para auxiliar o processo.
+
+# install.packages("camcorder")
+library(camcorder)
+
+gg_record(
+  dir = "Mapas/",    # Pasta onde serão salvos os produtos
+  device = "png",    # Formato do arquivo
+  height = 3000,     # Resolução
+  width = 3000,
+  units = "px"       # Unidade da resolução fornecida
+)
+
 ## 6.1 Pacote `geobr`---#
 # O 'geobr' é um pacote R que permite o acesso dos shapefiles do Instituto Brasileiro de Geografia e Estatística (IBGE).
 # install.packages('geobr')   # instalando o pacote 'geobr'.
@@ -277,7 +293,7 @@ plot(Amazon$geom, col = 'lightgreen')
 # Para plotar mais de um objeto 'sf' no mesmo plot, é importante que eles estejam no mesmo SRC.
 sf::st_crs(BR)
 sf::st_crs(Amazon)
-st_crs(BR) == st_crs(Amazon)
+sf::st_crs(BR) == st_crs(Amazon)
 
 ## 6.2 Pacote ‘ggplot2’---#
 # O 'ggplot2' faz parte da coleção de pacotes "Tidyverse" e foi construído para visualização de dados.
@@ -366,7 +382,7 @@ mapaBR.UC <- ggplot() +
                                'Reserva Extrativista' = cores[10],
                                'Reserva Particular do Patrimônio Natural' = cores[11]),
                     breaks = c('Brasil', 'Amazônia Legal', unique(UC.Fil$categoria))
-                    )   # Definindo a ordem da legenda.
+  )   # Definindo a ordem da legenda.
 mapaBR.UC
 
 # Ajustando a legenda e o tema:
@@ -397,13 +413,13 @@ mapaBR.UC3 <-
   ggspatial::annotation_scale(
     location = 'bl',                           # Localização da escala gráfica.
     bar_cols = c('darkgrey','white'),          # Cores das barras.
-    height = unit(0.2, "cm"))+                 # Altura da escala gráfica.
+    height = unit(0.3, "cm"))+                 # Altura da escala gráfica.
   ggspatial::annotation_north_arrow(
     location = 'tr',                           # Localização da seta norte.
-    pad_x = unit(0.30, 'cm'),                  # Distância da borda do eixo x.
-    pad_y = unit(0.30, 'cm'),                  # Distância da borda do eixo y.
-    height = unit(1.0, 'cm'),                  # Altura  da seta norte.
-    width = unit(1.0, 'cm'),                   # Largura da seta norte.
+    pad_x = unit(0.50, 'cm'),                  # Distância da borda do eixo x.
+    pad_y = unit(0.50, 'cm'),                  # Distância da borda do eixo y.
+    height = unit(1.5, 'cm'),                  # Altura  da seta norte.
+    width = unit(1.5, 'cm'),                   # Largura da seta norte.
     style = north_arrow_fancy_orienteering(    # Tipo de seta.
       fill = c('grey40', 'white'),             # Cores de preenchimento da seta.
       line_col = 'grey20'))                    # Cor  das linhas da seta.
@@ -411,11 +427,121 @@ mapaBR.UC3
 
 # Podemos exportar o mapa como imagem usando a função ggsave().
 ggplot2::ggsave(
-  filename = 'Mapa_UC.png',      # Nome do arquivo e formato que será salvo.
-  plot = mapaBR.UC3,             # Nome do objeto na qual o mapa está armazenado.
-  width = 1080,                  # Largura da imagem.
-  height = 864,                  # Altura da imagem.
-  units = 'px',                  # Unidade ("px" (pixel), "in" (polegada), "cm", "mm")
-  scale = 3)                     # Multiplica os valores de altura e largura da imagem.
+  filename = 'Mapas/Mapa_UC.png', # Nome do arquivo e formato que será salvo.
+  plot = mapaBR.UC3,              # Nome do objeto na qual o mapa está armazenado.
+  width = 3000,                   # Largura da imagem.
+  height = 3000,                   # Altura da imagem.
+  units = 'px')                   # Unidade ("px" (pixel), "in" (polegada), "cm", "mm")
+
+# Mapa do Rio Grande do Sul Ilustrando Precipitação Acumulada em Abril e Maio de 2024
+
+# Carregando dados
+BR_states <- read_state()
+RS_meso <- read_meso_region(code_meso = "RS")
+Prec_RS <- read_csv(file = "")
+
+# Inciando o Gráfico
+ggplot() +
+  # Plotando o Brasil no Mapa
+  geom_sf(
+    data = BR_states,
+    fill = "white",
+    inherit.aes = F,
+  ) +
+  # Acrescentando Mesoregiões do Rio Grande do Sul
+  geom_sf(
+    data = RS_meso,
+    mapping = aes(fill = name_meso),
+    inherit.aes = F) +
+  # Acrescentando pontos com localidades das estações 
+  geom_point(
+    data = Prec_RS, 
+    mapping = aes(x = Longitude, y = Latitude, color = Prec_Acc),
+    inherit.aes = F,
+    size = 5,
+    shape = 16,
+    stroke = 10,
+    alpha = 0.8
+  ) +
+  # Corrigindo zoom do mapa para o Rio Grande do Sul
+  coord_sf(
+    xlim = c(-58, -49),
+    ylim = c(-34, -27)
+  ) +
+  # Adicionando informação da Precipitação Acumulada
+  geom_text(
+    data = Prec_RS, 
+    mapping = aes(
+      x = Longitude, 
+      y = Latitude, 
+      label = round(Prec_Acc), 
+      family = "serif"),
+    color = "white",
+    size = 3.5,
+  ) +
+  # Alterando escala de cores
+  scale_fill_brewer(
+    type = "qual",
+    palette = "Set3"
+  ) +
+  scale_color_binned(
+    type = "viridis",
+    end = 0.75,
+    option = "G",
+    direction = -1,
+    label = \(x) paste0(x, "mm")
+  ) +
+  # Títulos dos Eixos
+  labs(title = "Precipitação Acumulada no Rio Grande do Sul",
+       subtitle = "Período: 01/04/2024 a 31/05/2024",
+       color = "Precipitação",
+       fill = "Mesorregião",
+       caption = "DATUM SIRGAS 2000 | Fonte dos dados: INMET/BDMEP, 2024 | Elaborado por @Proamb.R") +
+  # Tema
+  theme_minimal() +
+  theme(
+    text = element_text(size = 16, family = "serif"),
+    axis.title = element_text(color = "#8b9099"),
+    axis.text = element_text(color = "#8b9099"),
+    axis.text.x = element_text(angle = 15, vjust = 0.4, margin = margin(0.5, 0.5, 0.5, 0.5, "mm")),
+    axis.ticks = element_line(color = "white"),
+    axis.line = element_line(color = "white"),
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(face  = "bold"),
+    plot.caption = element_text(color = "#8b9099", vjust = 0),
+    plot.background = element_rect(fill = "#fcfdff"),
+    plot.margin = margin(t = 3, r = 6, b = 10, l = 3, unit = "mm"),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    legend.title = element_text(face = "bold", size = 13),
+    legend.text = element_text(size = 11),
+    legend.background = element_blank(),
+    legend.position = "inside",
+    legend.justification = c(0, 0.0),
+    legend.margin = margin(2,2,2,2, "mm"),
+    legend.key.size = unit(4, "mm")
+  ) +
+  # Anotações com Seta Norte e Escala
+  annotation_scale(
+    location = 'br',                          
+    bar_cols = c('darkgrey','white'),          
+    height = unit(0.2, "cm"))+                 
+  annotation_north_arrow(
+    location = 'tr',                           
+    pad_x = unit(0.30, 'cm'),                
+    pad_y = unit(0.30, 'cm'),                  
+    height = unit(1.5, 'cm'),                  
+    width = unit(1.5, 'cm'),                
+    style = north_arrow_fancy_orienteering(   
+      fill = c('grey40', 'white'),           
+      line_col = 'grey20'))                  
+
+ggsave(
+  filename = "Plot/MapaRioGrandeDoSul.png",
+  device = "png",
+  height = 3000,
+  width = 3000,
+  units = "px"
+)
 
 #------------------------https://linktr.ee/pexcca.lamet------------------------#
