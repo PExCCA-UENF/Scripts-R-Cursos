@@ -438,7 +438,7 @@ ggplot2::ggsave(
 # Carregando dados
 BR_states <- read_state()
 RS_meso <- read_meso_region(code_meso = "RS")
-Prec_RS <- read_csv(file = "")
+Prec_RS <- read_csv(file = "https://raw.githubusercontent.com/PExCCA-UENF/Scripts-R-Cursos/refs/heads/main/Introdu%C3%A7%C3%A3o%20a%20Mapas%20no%20R/Dados/Precipitacao_Acumulada_RS_Abril_Maio_2024.csv")
 
 # Inciando o Gráfico
 ggplot() +
