@@ -448,7 +448,7 @@ ggplot() +
     fill = "white",
     inherit.aes = F,
   ) +
-  # Acrescentando Mesoregiões do Rio Grande do Sul
+  # Acrescentando Mesorregiões do Rio Grande do Sul
   geom_sf(
     data = RS_meso,
     mapping = aes(fill = name_meso),
