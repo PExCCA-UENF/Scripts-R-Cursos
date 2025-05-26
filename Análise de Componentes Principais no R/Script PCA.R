@@ -3,7 +3,7 @@
 #          PROJETO "PROCESSAMENTO E ANÁLISE DE DADOS AMBIENTAIS COM R"         #
 #                        Contato: pexcca.lamet@uenf.br                         #
 #                       https://linktr.ee/pexcca.lamet                         #
-#                       Script Atualizado em 07/12/2024                        #
+#                       Script Atualizado em 26/05/2025                        #
 #==============================================================================#
 
 #                    ANÁLISE DE COMPONENTES PRINCIPAIS NO R                    #
@@ -66,7 +66,7 @@ download.file(url,           # URL do arquivo que você deseja baixar.
 getwd()	# Verifique o diretório de trabalho atual.
 dir()   # Verifique os arquivos do diretório de trabalho.
 
-## Organizando os dados ---#
+#------------------------------------------------------------------------------#
 dir.create(path = "Dados")          # Criando uma pasta denominada "Dados" no diretório de trabalho.
 file.copy("TMED.xlsx", "./Dados")   # Copiando o arquivo "TMED.xlsx" para a pasta "Dados".
 file.remove("TMED.xlsx")            # Removendo o arquivo "TMED.xlsx" do diretório de trabalho.
@@ -74,7 +74,6 @@ file.remove("TMED.xlsx")            # Removendo o arquivo "TMED.xlsx" do diretó
 dir("./Dados")   # Verifique os arquivos dentro da pasta "Dados".
 
 #------------------------------------------------------------------------------#
-
 ##	Importação de dados em .xlsx e .xls---#
 #	Como não tem a função no R básico, será necessário instalar e carregar o pacote readxl.
 
@@ -94,14 +93,11 @@ str(TMED)   # Mostra a estrutura dos dados.
 # 2. Tibbles são similares aos data frames, mas são diferentes em dois aspectos: impressão e indexação.
 #	3. Por padrão, apenas as dez primeiras linhas da base são apresentadas.
 #	4. Também são apresentadas a dimensão da tabela e as classes de cada coluna.
-
-head(TMED)
-
 #	5. dbl (double): com precisão dupla, que armazena a parte fracionária com maior precisão.
 
 #------------------------------------------------------------------------------#
 ## Operador Pipe---#
-## Neste curso, vamos utilizar o operador pipe, que é uma das funcionalidades mais 
+## Neste curso, vamos utilizar o operador pipe que é uma das funcionalidades mais 
 ## populares na comunidade R. Ele facilita a construção e leitura de uma série de 
 ## comandos interligados, o que será essencial para análise exploratória de dados multivariados.
 
@@ -112,7 +108,7 @@ head(TMED)
 
 ## A ideia do operador pipe é usar o valor resultante de uma expressão como
 ## primeiro argumento da próxima função, possibilitando o encadeamento de funções.
-## Podemos usá-lo facilmente com o atalho Ctrl + Shift + M. 
+## Podemos usá-lo facilmente com o atalho Ctrl + Shift + M.
 
 # Ex.:
 mean(TMED$Ano, na.rm = T)
@@ -156,28 +152,23 @@ TMED_mensal <- TMED |>
 # A função summarise() agrega sumarizações unindo diversos cálculos ao longo de uma base de dados.
 
 # Calculando a média (mean):
-TMED_mensal |>  
+TMED_mensal  |>  
   dplyr::summarise(TMED.jan = mean(Janeiro, na.rm = T),
             TMED.fev = mean(Fevereiro, na.rm = T))
 
 # Com o auxílio do comando groupy_by() podemos ainda agrupar os dados para a sumarização.
-TMED_mensal |> 
-  group_by(UF) |>
+TMED_mensal |> group_by(UF) |>
   dplyr::summarise(TMED.jan = mean(Janeiro, na.rm = T),
-            TMED.fev = mean(Fevereiro, na.rm = T)) |> 
-  print(n=23) # Definindo número de linhas.
+            TMED.fev = mean(Fevereiro, na.rm = T))
 
 # Use a função across() com a função summarise() para facilitar a execução da mesma operação em várias colunas.
-TMED_mensal |> 
-  group_by(UF) |>
-  dplyr::summarise(across(2:13, 
-                          function(x) mean(x, # Aplicando a função "mean" nos valores da coluna (2:13).
-                                           na.rm = TRUE))) # Remove valores ausentes.
+TMED_mensal |> group_by(UF) |>
+  dplyr::summarise(across(2:13,  # Selecionando as colunas 2 a 13.
+                   mean, na.rm = T))
 
 # Calculando a média (mean) e a mediana (median):
 TMED.med <- 
-  TMED_mensal  |> 
-  group_by(UF) |>
+  TMED_mensal  |> group_by(UF) |>
   dplyr::summarise(across(2:13, 
                    list(Média = mean, Mediana = median), na.rm = T))
 View(TMED.med)
@@ -231,7 +222,7 @@ TMED_mensal |>
 
 TMED_mensal$UF <- 
   TMED_mensal$UF |> 
-  as.factor() # Transformando a coluna "UF" em fator/categoria.
+  as.factor()  # Transformando a coluna "UF" em fator/categoria.
 
 # Podemos usar a informação da Unidade Federativa (UF) para montar o boxplot.
 
@@ -239,7 +230,7 @@ gr1 <-
   TMED_mensal |>
   ggplot2::ggplot() +
   geom_boxplot(mapping = aes(y = Janeiro, x = UF,
-                             fill = UF)) # Adicionando o preenchimento da UF.
+                             fill = UF))
 gr1
 
 # Esse gráfico pode ser customizado, alterando o seu estilo, informações dos 
@@ -247,7 +238,7 @@ gr1
 
 gr2 <- 
   gr1 + 
-  scale_y_continuous(name = "Temperatura Média de Janeiro (ºC)", 
+  scale_y_continuous(name = "Temperatura Média Anual (ºC)", 
                      breaks = seq(12, 30, 2)) +  # Alterando o rótulo do eixo y.
   scale_fill_viridis_d(option = "turbo") +       # Alterando a escala de cores dos preenchimentos das áreas.
   theme_minimal() +                              # Alterando o tema do gráfico.          
@@ -278,7 +269,7 @@ gr4 <-
   ggplot2::geom_jitter(aes(y = Janeiro, x = UF),
               shape = 16,	  	     # Definir a forma.
               width = .1,	         # Definir o espalhamento dos pontos.
-              alpha = .5,	  	     # Alterar a transparência das formas.
+              alpha = .3,	  	     # Alterar a transparência das formas.
               size = 1,	    	     # Definir o tamanho.
               color = "black")+	   # Definir a cor.
   theme(legend.position = "none")  # Remove a legenda.
@@ -297,14 +288,13 @@ TMED_mensal |>
 
 # Para escolher o método de correlação, precisamos saber se os dados seguem uma 
 # distribuição normal. Existem diferentes testes para normalidade multivariada, 
-# e aqui vamos utilizar o pacote 'MVN'. Para detalhes do pacote acesse o link:
+# e aqui vamos utilizar o pacote 'MVA'. Para detalhes do pacote acesse o link:
 # https://pdfs.semanticscholar.org/5f56/fddab96311b6ff592fe1f1f59093809900a3.pdf
 
 if (!require(MVN)) install.packages("MVN")  # Instalando o pacote "MVN".
 library(MVN)
 
 # Testando a normalidade multivariada:
-
 TMED_mensal |> 
   select(Janeiro:Dezembro)|> 
   mvn()
@@ -336,8 +326,7 @@ Cor.dados |>
 
 # Podemos calcular o p-valor para verificar se essas correlações são significativas.
 
-p.mat = Cor.dados |>
-        cor_pmat() 
+p.mat = cor_pmat(Cor.dados) 
 
 # O p.mat calcula as matrizes de correlação e p-valor para observar a existência 
 # de significância estatística entre as variáveis do conjunto de dados.
@@ -391,6 +380,7 @@ res.pca |>
 res.pca |> 
   factoextra::fviz_eig(choice = "variance",
                        addlabels = T)
+
 # Visualização dos autovalores (eigenvalue) das dimensões:
 res.pca |>
   factoextra::fviz_eig(choice = "eigenvalue",
@@ -456,7 +446,7 @@ res.pca2 |>
 # Selecionando os dados do SEB e transformando em data frame:
 
 SEB <- TMED_mensal |> 
-  dplyr::filter(UF %in% c("RJ", "SP", "ES", "MG")) |> 
+  dplyr::filter(UF %in% c("RJ", "SP", "ES", "MG")) |>
   data.frame()
 View(SEB)
 
@@ -465,13 +455,18 @@ rownames(SEB) <- paste(SEB$UF,
                        SEB$Nome.da.Estação, 
                        sep="_") 
 
+# Removendo a informação das UF não utilizadas.
+SEB$UF = droplevels(SEB$UF) 
+  
+
 #------------------------------------------------------------------------------#
-# PCA: função princomp().
+# PCA: função prcomp() - método da decomposição em valor singular gera mais confiabilidade numérica.
 
 res.pca3 <- 
   SEB |> 
   dplyr::select(Janeiro:Dezembro) |> 
-  stats::princomp(cor = T)   
+  stats::prcomp(center = T,   # center: se TRUE, ajuda os dados de acordo com a média.
+                scale = T)    # scale: se TRUE, padroniza os dados de entrada.
 res.pca3
 
 res.pca3 |> 
@@ -481,10 +476,6 @@ res.pca3$loadings |>
   unclass()    # Carregamentos (loadings) de cada variável nas componentes principais.
 
 res.pca3$scores               # Novos escores para as observações.
-
-#Variáveis na componente principal.
-res.pca3 |> fviz_contrib(choice = "var", # Definindo a análise das variáveis.
-                         axes = 1)       # Indicando a componente principal.
 
 # Visualização das variâncias das dimensões:
 gpca1 <- 
@@ -627,7 +618,7 @@ sc_bi
 # Usando o ggsave do ggplot2:
 ggplot2::ggsave( 
   plot = sc_bi,               # Gráfico criado anteriormente.
-  filename = "PCA_SEB.png",   # Nome e extensão do arquivo a ser salvo.
+  filename = "PCA_SEB2.png",  # Nome e extensão do arquivo a ser salvo.
   device = "png",             # Formato do arquivo.
   dpi = 600,                  # Resolução do arquivo.
   width = 7000,               # Largura do gráfico. 
@@ -637,4 +628,3 @@ ggplot2::ggsave(
 )
 
 #------------------------https://linktr.ee/pexcca.lamet------------------------#
-
