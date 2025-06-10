@@ -378,7 +378,36 @@ ggplot(
   geom_point() +
   facet_wrap(~month(Data))
 
-## Temas (Themes).
+ggplot(
+  data = df, 
+  aes(x = Temp, y = Evap, color = ID)
+  ) +
+  geom_point() +
+  facet_grid(rows = vars(ID))
+
+## Estatísticas ----
+
+ggplot(
+  data = df, 
+  aes(x = month(Data), y = Temp, fill = ID, group = month(Data))
+) +
+  stat_summary(fun = 'mean', geom = 'col') +
+  stat_summary(fun.min = ~mean(.x)-sd(.x), 
+               fun.max = ~mean(.x)+sd(.x), 
+               geom = 'errorbar') +
+  facet_grid(rows = vars(ID))
+
+ggplot(data = df, aes(x = Temp, y = Evap, color = ID)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'black') +
+  ggpmisc::stat_poly_eq(
+    aes(label = paste(after_stat(eq.label), 
+                      after_stat(rr.label),
+                      after_stat(p.value.label),
+                      sep = '*\'; \'*'))) +
+  facet_wrap(~ID)
+
+## Temas (Themes) ----
 ## Os temas alteram a aparência geral do gráfico, incluindo fontes, cores de fundo, 
 ## gridlines, etc. O ggplot2 oferece alguns temas prontos e também podemos personalizar
 ## o nosso próprio tema usando a função theme().
@@ -436,27 +465,37 @@ gr + ggthemes::theme_stata()
 gr + ggthemes::theme_tufte()
 gr + ggthemes::theme_wsj()
 
-## Estatísticas ----
+# Outro pacote em destaque é o `ThemePark`, com diversos temas inpirados em elementos da cultura pop.
+# O pacote não está disponível no CRAN e precisa ser instalado com uma estrutura que indexa o seu repositório no GitHub.
 
-ggplot(
-  data = df, 
-  aes(x = month(Data), y = Temp, fill = ID, group = month(Data))
-) +
-  stat_summary(fun = 'mean', geom = 'col') +
-  stat_summary(fun.min = ~mean(.x)-sd(.x), 
-               fun.max = ~mean(.x)+sd(.x), 
-               geom = 'errorbar') +
-  facet_grid(rows = vars(ID))
+if (!require(remotes)) install.packages("remotes")
+if (!require(ThemePark)) remotes::install_github("MatthewBJane/ThemePark")
 
-ggplot(data = df, aes(x = Temp, y = Evap, color = ID)) +
-  geom_point() +
-  geom_smooth(method = 'lm', color = 'black') +
-  ggpmisc::stat_poly_eq(
-    aes(label = paste(after_stat(eq.label), 
-                      after_stat(rr.label),
-                      after_stat(p.value.label),
-                      sep = '*\'; \'*'))) +
-  facet_wrap(~ID)
+gr + ThemePark::theme_barbie()
+gr + ThemePark::theme_oppenheimer()
+gr + ThemePark::theme_starwars()
+gr + ThemePark::theme_zelda()
+gr + ThemePark::theme_terminator()
+gr + ThemePark::theme_spiderman()
+gr + ThemePark::theme_avatar()
+gr + ThemePark::theme_gryffindor()
+gr + ThemePark::theme_hufflepuff()
+gr + ThemePark::theme_ravenclaw()
+gr + ThemePark::theme_slytherin()
+gr + ThemePark::theme_futurama()
+gr + ThemePark::theme_simpsons()
+gr + ThemePark::theme_lordoftherings()
+gr + ThemePark::theme_gameofthrones()
+gr + ThemePark::theme_godfather()
+gr + ThemePark::theme_nemo()
+gr + ThemePark::theme_friends()
+gr + ThemePark::theme_alien()
+gr + ThemePark::theme_grand_budapest()
+gr + ThemePark::theme_asteroid_city()
+gr + ThemePark::theme_french_dispatch()
+gr + ThemePark::theme_moonrise_kingdom()
+gr + ThemePark::theme_elf()
+
 
 # 5. PRODUÇÃO DE GRÁFICOS -----------------------------------------------------#
 
