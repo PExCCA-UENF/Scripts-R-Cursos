@@ -301,7 +301,7 @@ TMAX_INMET |>
 TMAX_RJ <- 
 TMAX_INMET |> 
   dplyr::filter(UF == 'RJ') |> 
-  print
+  print()
 
 TMAX_INMET |> 
   dplyr::filter(
@@ -522,3 +522,4 @@ ggsave(
   width = 3000, height = 1500,           # Largura e altura, respectivamente
   units = 'px'
 )
+
