@@ -56,7 +56,7 @@ setwd()
 # As 'Normais Climatológicas' são médias de variáveis meteorológicas, que foram 
 # calculadas obedecendo os critérios recomendados pela Organização Meteorológica Mundial (OMM).
 
-# Primeiro, vamor criar uma pasta denominada 'Dados_INMET':
+# Primeiro, vamor criar uma pasta denominada 'Dados':
 if(!dir.exists('Dados/')){
   dir.create('Dados')
 }
@@ -522,4 +522,5 @@ ggsave(
   width = 3000, height = 1500,           # Largura e altura, respectivamente
   units = 'px'
 )
+
 
