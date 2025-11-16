@@ -219,7 +219,7 @@ TMAX_INMET |>
   dplyr::filter(between(Ano, 34, 35))
 
 #------------------------------------------------------------------------------#
-## 3.7 Mudando da estrutura da base de dados
+## 3.7 Mudando a estrutura da base de dados
 
 # Em R, podemos "pivotar" os dados, ou seja, transformar:
 # - formato largo (wide): cada coluna representa uma variável/tempo.
@@ -371,3 +371,4 @@ ggsave(
 )
 
 #------------------------https://linktr.ee/pexcca.lamet------------------------#
+
