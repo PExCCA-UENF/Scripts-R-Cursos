@@ -232,8 +232,8 @@ ls("package:tidyverse")   # Lista as funções do pacote.
 # É a pasta onde o R procura arquivos para leitura e grava os resultados.
 # Definir o diretório evita ter que escrever caminhos longos em cada comando.
 
-getwd()                     # Mostra o diretório de trabalho atual
-setwd("C:/Users/Documentos/R") # Define um novo diretório de trabalho
+getwd()                        # Mostra o diretório de trabalho atual.
+setwd("C:/Users/Documentos/R") # Define um novo diretório de trabalho.
 # Obs.: use sempre "/" em vez de "\" no caminho.
 
 # No RStudio, também é possível definir manualmente:
@@ -256,3 +256,4 @@ setwd("C:/Users/Documentos/R") # Define um novo diretório de trabalho
 # - Se desejar, use "Version Control" para conectar ao Git/GitHub.
 
 #------------------------https://linktr.ee/pexcca.lamet------------------------#
+
