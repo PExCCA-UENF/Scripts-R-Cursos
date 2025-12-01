@@ -121,11 +121,11 @@ vc <- c("a", "b", "c", "d")    # Vetor de caracteres.
 
 ## Nota: Os caracteres ou cadeias de texto devem ser colocados entre aspas simples ' ' ou duplas " ".
 
-seq(from = 1, to = 10))   # Sequência que vai do nº 1 ao número 10.
-seq(from = 13, to = 1, by = -1))   # Sequência decrescente do 13 ao 1.
+seq(from = 1, to = 10)   # Sequência que vai do nº 1 ao número 10.
+seq(from = 13, to = 1, by = -1)   # Sequência decrescente do 13 ao 1.
 rep(1:5, times = 3)       # Repetição.
-rep(x = 1:5, times = 3))  # Repete 3 vezes os valores de 1 a 5.
-rep(x = 1:3, times = 1:3))   # Repete o 1º valor do intervalo uma vez, o 2º duas vezes e o 3º três vezes.
+rep(x = 1:5, times = 3)  # Repete 3 vezes os valores de 1 a 5.
+rep(x = 1:3, times = 1:3)   # Repete o 1º valor do intervalo uma vez, o 2º duas vezes e o 3º três vezes.
 
 # 5.2 Matrizes:
 # - Matrizes são tabelas organizadas em linhas e colunas no formato m x n, com uma 
@@ -256,4 +256,5 @@ setwd("C:/Users/Documentos/R") # Define um novo diretório de trabalho.
 # - Se desejar, use "Version Control" para conectar ao Git/GitHub.
 
 #------------------------https://linktr.ee/pexcca.lamet------------------------#
+
 
