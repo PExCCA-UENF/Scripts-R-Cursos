@@ -848,7 +848,7 @@ library(gtExtras)
 ### ---- 2. Download dos dados de normais climatológicas do INMET ----
 
 download.file(
-  url = "<link>",           # Link direto para o arquivo do INMET
+  url = "https://portal.inmet.gov.br/uploads/normais/01-Temperatura-M%C3%A9dia-Compensada-Bulbo-Seco-NCB_1981-2010.xls",           # Link direto para o arquivo do INMET
   destfile = "Normais.xls", # Nome do arquivo local que será salvo
   method = "curl"           # Método de download (pode variar conforme o sistema)
 )
@@ -973,3 +973,4 @@ gtsave(
   data = Heatmap_gt,
   filename = "Anomalias_CamposRJ_gt.png"
   )
+
